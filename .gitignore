@@ -2,7 +2,7 @@
 .gradle
 /build/
 .idea
-
+src/main/java/com.example.casestudymodule3/connection/ConnectionCSM
 # Ignore Gradle GUI config
 gradle-app.setting
 
