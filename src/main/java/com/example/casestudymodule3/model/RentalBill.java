@@ -1,15 +1,15 @@
 package com.example.casestudymodule3.model;
 
-public class OrderBill {
+public class RentalBill {
     private int orderId;
     private int bookId;
     private int quantity;
     private double total;
 
-    public OrderBill() {
+    public RentalBill() {
     }
 
-    public OrderBill(int orderId, int bookId, int quantity, double total) {
+    public RentalBill(int orderId, int bookId, int quantity, double total) {
         this.orderId = orderId;
         this.bookId = bookId;
         this.quantity = quantity;

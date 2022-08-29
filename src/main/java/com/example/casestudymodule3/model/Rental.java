@@ -2,7 +2,7 @@ package com.example.casestudymodule3.model;
 
 import java.time.LocalDate;
 
-public class Order {
+public class Rental {
     private int id;
     private int idUser;
     private LocalDate create;
@@ -11,7 +11,7 @@ public class Order {
     private String address;
     private String phone;
 
-    public Order(int id, int idUser, LocalDate create, LocalDate duration, String status, String address, String phone) {
+    public Rental(int id, int idUser, LocalDate create, LocalDate duration, String status, String address, String phone) {
         this.id = id;
         this.idUser = idUser;
         this.create = create;

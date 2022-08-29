@@ -1,7 +1,5 @@
 package com.example.casestudymodule3.model;
 
-import javax.management.relation.Role;
-
 public class Users {
     private int id;
     private String account;

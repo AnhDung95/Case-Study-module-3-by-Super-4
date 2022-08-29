@@ -8,11 +8,12 @@ public class Book {
     private String category;
     private String publishers;
     private String status;
+    private String img;
 
     public Book() {
     }
 
-    public Book(int id, String name, String describe, String author, String category, String publishers, String status) {
+    public Book(int id, String name, String describe, String author, String category, String publishers, String status, String img) {
         this.id = id;
         this.name = name;
         this.describe = describe;
@@ -20,8 +21,15 @@ public class Book {
         this.category = category;
         this.publishers = publishers;
         this.status = status;
+        this.img = img;
+    }
+    public String getImg() {
+        return img;
     }
 
+    public void setImg(String img) {
+        this.img = img;
+    }
     public int getId() {
         return id;
     }
