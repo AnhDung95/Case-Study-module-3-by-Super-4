@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectionDb {
     private static final String url ="jdbc:mysql://localhost:3306/bookcase";
     private static final String user ="root";
-    private static final String password ="123456";
+    private static final String password ="123456789";
 
     public Connection getConnection(){
         Connection connection = null;
@@ -23,8 +23,8 @@ public class ConnectionDb {
         return connection;
     }
 
-//    public static void main(String[] args) {
-//        ConnectionDb connectionDb = new ConnectionDb();
-//        connectionDb.getConnection();
-//    }
+    public static void main(String[] args) {
+        ConnectionDb connectionDb = new ConnectionDb();
+        connectionDb.getConnection();
+    }
 }
