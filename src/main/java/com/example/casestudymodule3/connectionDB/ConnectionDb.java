@@ -23,8 +23,8 @@ public class ConnectionDb {
         return connection;
     }
 
-    public static void main(String[] args) {
-        ConnectionDb connectionDb = new ConnectionDb();
-        connectionDb.getConnection();
-    }
+//    public static void main(String[] args) {
+//        ConnectionDb connectionDb = new ConnectionDb();
+//        connectionDb.getConnection();
+//    }
 }
