@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionCSM {
+public class ConnectionDB {
     private static final String url= "jdbc:mysql://localhost:3306/case3";
     private  static final String user ="root";
     private static final String pass ="dung25081995";
