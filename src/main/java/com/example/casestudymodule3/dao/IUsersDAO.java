@@ -4,8 +4,9 @@ import com.example.casestudymodule3.model.Users;
 
 import java.sql.SQLException;
 
-public interface IUserDAO {
-    public void insertUsers(Users users) throws SQLException;
-
+public interface IUsersDAO {
+    String findPassByAccount(String account, String email);
+    boolean updateByUser(String account,Users users);
+    int findByUser(Users users);
 
 }
