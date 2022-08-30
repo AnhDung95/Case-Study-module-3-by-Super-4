@@ -4,12 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionDb {
+public class ConnectionDatabase {
     private static final String url ="jdbc:mysql://localhost:3306/bookcase";
     private static final String user ="root";
     private static final String password ="123456789";
 
-    public Connection getConnection(){
+    public static Connection getConnection(){
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -24,7 +24,7 @@ public class ConnectionDb {
     }
 
     public static void main(String[] args) {
-        ConnectionDb connectionDb = new ConnectionDb();
-        connectionDb.getConnection();
+        ConnectionDatabase connectionDatabase = new ConnectionDatabase();
+        connectionDatabase.getConnection();
     }
 }
