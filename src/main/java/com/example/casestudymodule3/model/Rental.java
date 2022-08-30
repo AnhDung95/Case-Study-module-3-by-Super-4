@@ -11,12 +11,27 @@ public class Rental {
     private String address;
     private String phone;
 
+    public Rental(int id, int idUser,String status,String address, String phone) {
+        this.id = id;
+        this.idUser = idUser;
+        this.status = status;
+        this.address = address;
+        this.phone = phone;
+    }
+
     public Rental(int id, int idUser, LocalDate create, LocalDate duration, String status, String address, String phone) {
         this.id = id;
         this.idUser = idUser;
         this.create = create;
         this.duration = duration;
         this.status = status;
+        this.address = address;
+        this.phone = phone;
+    }
+
+
+    public Rental(int idUser, String address, String phone) {
+        this.idUser = idUser;
         this.address = address;
         this.phone = phone;
     }
