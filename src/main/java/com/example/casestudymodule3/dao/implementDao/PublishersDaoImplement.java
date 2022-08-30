@@ -81,7 +81,15 @@ public class PublishersDaoImplement implements IPublishersDao {
         Publishers publishers = null;
         try {
             PreparedStatement statement = connection.prepareStatement(QUERY_FIND_PUBLISHERS_BY_ID);
+            statement.setInt(1,id);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                String name = rs.getString(1);
+                publishers = new Publishers(id,name);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        return null;
+        return publishers;
     }
 }
