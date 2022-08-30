@@ -2,7 +2,7 @@
 .gradle
 /build/
 .idea
-src/main/java/com.example.casestudymodule3/connectionDB/*
+src/main/java/com/example/casestudymodule3/config/*
 /SQL/
 # Ignore Gradle GUI config
 gradle-app.setting
