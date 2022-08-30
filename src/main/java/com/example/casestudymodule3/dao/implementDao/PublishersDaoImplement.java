@@ -17,7 +17,7 @@ public class PublishersDaoImplement implements IPublishersDao {
     public static final String QUERY_UPDATE_PUBLISHERS ="UPDATE publishers SET name = ? WHERE (id = ?);";
     public static final String QUERY_DELETE_PUBLISHERS ="DELETE FROM publishers WHERE (id = ?);";
     public static final String QUERY_FIND_PUBLISHERS_BY_ID ="SELECT publishers.name FROM publishers WHERE id = ? ;";
-    private final Connection connection = com.example.casestudymodule3.connectionDB.ConnectionDB.getConnection();
+    private final Connection connection = ConnectionDB.getConnection();
 
     @Override
     public List<Publishers> getAll() {
