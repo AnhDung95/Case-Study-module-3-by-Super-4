@@ -13,11 +13,29 @@
     .navbar-nav {
         display: flex;
     }
+    .footer__title{
+        display: flex;
+        justify-content: space-between;
+    }
+    .syJk0q{
+        display: block;
+    }
+    .EWPRwa span {
+        text-align: center;
+        margin-top:20px;
+    }
+    .Footer span{
+         text-align: center;
+    }
+    .Footer{
+        margin-top:40px;
+    }
+
 </style>
 <!DOCTYPE html>
 <html>
 <head>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
         <li>
             <i class="fa fa-phone" style="margin-left: 1300px"></i>
             <span>Hotline:0979276042</span>
@@ -40,11 +58,35 @@
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li><a href="#">Tu Tiên</a></li>
-                        <li><a href="#">Kinh Dị</a></li>
-                        <li><a href="#">Xuyên Không</a></li>
-                        <li><a href="#">Manhua</a></li>
-                        <li><a href="#">Tình Cảm</a></li>
+                        <li><a href="#">Ẩm thực - Nấu ăn</a></li>
+                        <li><a href="#">Cổ Tích - Thần Thoại</a></li>
+                        <li><a href="#">Công Nghệ Thông Tin</a></li>
+                        <li><a href="#">Học Ngoại Ngữ</a></li>
+                        <li><a href="#">Khoa Học - Kỹ Thuật</a></li>
+                        <li><a href="#">Kiếm Hiệp - Tiên Hiệp</a></li>
+                        <li><a href="#">Marketing - Bán hàng</a></li>
+                        <li><a href="#">Kiến Trúc - Xây Dựng</a></li>
+                        <li><a href="#">Kinh Tế - Quản Lý</a></li>
+                        <li><a href="#">Lịch Sử - Chính Trị</a></li>
+                        <li><a href="#">Nông - Lâm - Ngư</a></li>
+                        <li><a href="#">Phiêu Lưu - Mạo Hiểm</a></li>
+                        <li><a href="#">Tài Liệu Học Tập</a></li>
+                        <li><a href="#">Tâm Lý - Kỹ Năng Sống</a></li>
+                        <li><a href="#">Tiểu Thuyết Phương Tây</a></li>
+                        <li><a href="#">Trinh Thám - Hình Sự</a></li>
+                        <li><a href="#">Truyện Ngắn - Ngôn Tình</a></li>
+                        <li><a href="#">Tử Vi - Phong Thủy</a></li>
+                        <li><a href="#">Y Học - Sức Khỏe</a></li>
+                        <li><a href="#">Thể Thao - Nghệ Thuật</a></li>
+                        <li><a href="#">Tiểu Thuyết Trung Quốc</a></li>
+                        <li><a href="#">Truyện Cười - Tiếu Lâm</a></li>
+                        <li><a href="#">Truyên Teen - Tuổi Học Trò</a></li>
+                        <li><a href="#">Văn Hóa - Tôn Giáo</a></li>
+                        <li><a href="#">Văn Học Việt Nam</a></li>
+                        <li><a href="#">Truyện Tranh</a></li>
+                        <li><a href="#">Truyện Ma - Truyện Kinh Dị</a></li>
+                        <li><a href="#">Triết Học</a></li>
+                        <li><a href="#">Khác</a></li>
                     </ul>
 
                 </li>
@@ -130,6 +172,23 @@
             <a href=""style="margin-left: 94px"><i class="fa fa-folder-open"></i>Văn Học Việt Nam</a></div></div><div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mg-tb-7"><div class="item_folder">
             <a href=""style="margin-left: 94px"><i class="fa fa-folder-open"></i>Y Học - Sức Khỏe</a></div></div></div></div>
 </form>
+<div class="footer__title" style="border-top: 1px solid red" >
+    <a class="syJk0q"> © 2022 Thư Viện. Tất cả các quyền được bảo lưu. Quốc gia &amp; Khu vực:</a>
+    <span class="syJk0q">Singapore|Indonesia|Đài Loan|Thái Lan|Malaysia|Việt Nam|PhiLippines|Brazil|Mexico|Colombia|Chile|Polan|Argentina</span>
+</div>
+<div class="EWPRwa row">
 
+            <span class="col-lg-3">Chính sách bảo mật</span>
+            <span class="col-lg-3">Quy chế hoạt động</span>
+            <span class="col-lg-3">Chính sách vận chuyển</span>
+            <span class="col-lg-3">CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN</span>
+</div>
+<div class="Footer row">
+   <span class="col-lg-12"> Công ty Fatasic Four</span>
+    <span class="col-lg-12">Địa chỉ: Tầng 2-5-6, Tòa nhà CodeGym, số CT01-23 khu MonCity, Phường Bắc Từ Liêm, Quận Ba Đình, Thành phố Hà Nội, Việt Nam. Tổng đài hỗ trợ: 0964002838 - Email: imbakito1604@gmail.com</span>
+    <span class="col-lg-12">Chịu Trách Nhiệm Quản Lý Nội Dung: Phạm Minh Hoàng  - Điện thoại liên hệ: 0964002838  (ext 4678)</span>
+    <span class="col-lg-12">Mã số doanh nghiệp: 0106773786 do Sở Kế hoạch & Đầu tư TP Hà Nội cấp lần đầu ngày 10/02/2015</span>
+    <span class="col-lg-12">© 2015 - Bản quyền thuộc về Công ty TNHH Fantasic Four</span>
+</div>
 </body>
 </html>
