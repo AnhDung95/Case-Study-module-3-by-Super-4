@@ -18,7 +18,10 @@ public interface IBookService extends IGeneralService<Book> {
     }
 
     List<Book> findByKeyword(String keyword);
-    boolean add(Book book , int idCategory,int idPublishers);
+
+    boolean update(int id, Book book, int idCategory, int idPublishers);
+
+    boolean add(Book book , int idCategory, int idPublishers);
     List<Book> filter(String categoryName,String publishersName);
 
     @Override

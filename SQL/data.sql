@@ -37,7 +37,7 @@ create table users(
                       address nvarchar(100) not null ,
                       phone varchar(20) not null ,
                       email varchar(100) not null ,
-                      role enum('ADMIN','USER','STAFF') default 'USER'
+                      role enum('ADMIN','USER') default 'USER'
 );
 
 create table review(

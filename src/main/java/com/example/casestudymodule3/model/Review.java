@@ -15,7 +15,11 @@ public class Review {
         this.accountUser = accountUser;
         this.comment = comment;
     }
-
+    public Review(int bookId, String accountUser, String comment) {
+        this.bookId = bookId;
+        this.accountUser = accountUser;
+        this.comment = comment;
+    }
     public int getId() {
         return id;
     }
