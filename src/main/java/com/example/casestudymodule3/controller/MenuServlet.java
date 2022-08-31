@@ -59,7 +59,6 @@ private void action(HttpServletRequest req, HttpServletResponse resp) throws Ser
     }
 
     private void deleteCategory(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
     }
 
     private void display(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
