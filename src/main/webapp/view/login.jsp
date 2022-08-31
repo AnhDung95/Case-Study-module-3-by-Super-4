@@ -80,7 +80,7 @@
         }
     </style>
     <div id="wrapper">
-        <form  action="index.jsp">
+        <form  action="admin.jsp">
             <h3>Đăng nhập</h3>
             <div class="form-group">
                 <input type="text" name="email" required>
