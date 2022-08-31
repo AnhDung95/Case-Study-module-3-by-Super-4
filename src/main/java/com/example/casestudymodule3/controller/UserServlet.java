@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +50,10 @@ public class UserServlet extends HttpServlet {
             case "add":
                 addBooks(request,response);
                 break;
+            case "delete":
+                deleteBooks(request,response);
+                break;
+
 //            case "showFormEdit":
 //                editGet(request,response);
 //                break;
@@ -56,7 +61,7 @@ public class UserServlet extends HttpServlet {
                 editBooks(request,response);
                 break;
             case "delete":
-                deleteProduct(request,response);
+                deleteBooks(request,response);
                 break;
 //            case "laptops":
 //                getAllLaptops(request,response);
@@ -90,26 +95,36 @@ public class UserServlet extends HttpServlet {
         List<Book> books = iBookService.getAll();
         request.setAttribute("books", books);
         request.setAttribute("categories", categories);
-        request.getRequestDispatcher("admin/products.jsp").forward(request,response);
+        request.getRequestDispatcher("user/books.jsp").forward(request,response);
     }
 
     private void addBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String serial = request.getParameter("serial");
+        int Id = Integer.parseInt(request.getParameter("Id"));
         String name = request.getParameter("name");
-        int Id = Integer.parseInt(request.getParameter("category"));
-        int brandId = Integer.parseInt(request.getParameter("brand"));
-        double price = Double.parseDouble(request.getParameter("price"));
+        String describe = request.getParameter("describe");
+        String author = request.getParameter("author");
+        String category = request.getParameter("category");
+        String publishers = request.getParameter("publishers");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        String description = request.getParameter("description");
-        String imageURL = request.getParameter("imageURL");
-        Product  product = new Product(serial,name,price,quantity,description,imageURL);
-        boolean check = iProductService.add(product, Id, brandId);
+
+        String img = request.getParameter("imageURL");
+        Book book = new Book(Id,name,describe,author,category,publishers,quantity,img);
+        boolean check = iBookService.add(book,Id);
         request.setAttribute("checkAdd", check);
-        List<Product> products = iProductService.getAll();
-        request.setAttribute("products", products);
+        List<Book> books = iBookService.getAll();
+        request.setAttribute("books", books);
         request.setAttribute("categories",categories);
-        request.setAttribute("brands",brands);
-        request.getRequestDispatcher("admin/products.jsp").forward(request,response);
+        request.getRequestDispatcher("user/books.jsp").forward(request,response);
+    }
+
+    private void deleteBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        boolean checkDelete = iBookService.delete(id);
+        List<Book> books = iBookService.getAll();
+        request.setAttribute("books", books);
+        request.setAttribute("checkDel", checkDelete);
+        request.setAttribute("categories",categories);
+        request.getRequestDispatcher("user/books.jsp").forward(request,response);
     }
 
 //    private void blockedAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -195,16 +210,7 @@ public class UserServlet extends HttpServlet {
 //    }
 //
 //
-//    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        boolean checkDelete = iProductService.delete(id);
-//        List<Product> products = iProductService.getAll();
-//        request.setAttribute("products", products);
-//        request.setAttribute("checkDel", checkDelete);
-//        request.setAttribute("categories",categories);
-//        request.setAttribute("brands",brands);
-//        request.getRequestDispatcher("admin/products.jsp").forward(request,response);
-//    }
+//
 //
 //    private void editGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        int id = Integer.parseInt(request.getParameter("id"));

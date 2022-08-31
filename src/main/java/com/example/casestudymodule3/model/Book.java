@@ -14,7 +14,7 @@ public class Book {
     private Status status;
     private String img;
 
-    public Book() {
+    public Book(int id, String name, String describe, String author, String category, String publishers, int quantity) {
     }
 
     public Book(int id, String name, String describe, String author, String category, String publishers, int quantity, Timestamp createDay, Status status, String img) {

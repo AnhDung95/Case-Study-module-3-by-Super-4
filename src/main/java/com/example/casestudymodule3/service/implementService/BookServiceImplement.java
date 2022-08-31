@@ -19,7 +19,7 @@ public class BookServiceImplement implements IBookService {
         return bookDao.update(id,book,idCategory,idPublishers);
     }
     @Override
-    public boolean add(Book book, int idCategory, int idPublishers) {
+    public boolean add(Book book, int idCategory) {
         return bookDao.add(book, idCategory, idPublishers);
     }
 
