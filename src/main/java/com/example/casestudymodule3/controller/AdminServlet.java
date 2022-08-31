@@ -1,5 +1,6 @@
 package com.example.casestudymodule3.controller;
 
+import com.example.casestudymodule3.model.Category;
 import com.example.casestudymodule3.model.Role;
 import com.example.casestudymodule3.model.Users;
 import com.example.casestudymodule3.service.implementService.CategoryServiceImplement;
@@ -19,10 +20,10 @@ import java.util.List;
 @WebServlet(name = "AdminServlet", urlPatterns = "/admin")
 public class AdminServlet extends HttpServlet {
     private final IUsersService iUsersService = new UsersServiceImplement();
-    private final IProductService iProductService = new ProductServiceImplement();
+//    private final IProductService iProductService = new ProductServiceImplement();
     private final ICategoryService categoryService = new CategoryServiceImplement();
-    private final IBrandService brandService = new BrandServiceImplement();
-    private final List<Brand> brands = brandService.getAll();
+//    private final IBrandService brandService = new BrandServiceImplement();
+//    private final List<Brand> brands = brandService.getAll();
     private final List<Category> categories = categoryService.getAll();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         action(request, response);

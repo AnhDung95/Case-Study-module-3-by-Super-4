@@ -69,8 +69,6 @@ private void action(HttpServletRequest req, HttpServletResponse resp) throws Ser
     req.setAttribute("checkDelete", checkDelete);
     req.setAttribute("category",categorie);
     req.getRequestDispatcher("category/delete.jsp").forward(req,resp);
-
-
     }
 
     private void display(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
