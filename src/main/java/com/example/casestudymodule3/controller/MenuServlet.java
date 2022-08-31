@@ -1,5 +1,6 @@
 package com.example.casestudymodule3.controller;
 
+import com.example.casestudymodule3.dao.interfaceDao.ICategoryDao;
 import com.example.casestudymodule3.model.Category;
 import com.example.casestudymodule3.service.implementService.CategoryServiceImplement;
 import com.example.casestudymodule3.service.interfaceService.ICategoryService;
@@ -10,10 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "MenuServlet", urlPatterns = "/books")
 public class MenuServlet extends HttpServlet {
     private final ICategoryService iCategoryService = new CategoryServiceImplement();
+    private final List<Category> categorie = iCategoryService.getAll();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -59,6 +62,14 @@ private void action(HttpServletRequest req, HttpServletResponse resp) throws Ser
     }
 
     private void deleteCategory(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    int id= Integer.parseInt(req.getParameter("id"));
+    boolean checkDelete = iCategoryService.delete(id);
+    List<Category> categories = iCategoryService.getAll();
+    req.setAttribute("categories", categories);
+    req.setAttribute("checkDelete", checkDelete);
+    req.setAttribute("category",categorie);
+    req.getRequestDispatcher("category/delete.jsp").forward(req,resp);
+
 
     }
 
