@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
             Users users1 = iUsersService.findById(userID);
             Role role = users1.getRole();
             HttpSession session = req.getSession();
-            session.getAttribute("userID", userID);
+//            session.getAttribute("userID", userID);
             session.setAttribute("account", account);
             session.setAttribute("password", password);
             session.setAttribute("role", role);
