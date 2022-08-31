@@ -1,5 +1,7 @@
 package com.example.casestudymodule3.model;
 
+import java.sql.Timestamp;
+
 public class Book {
     private int id;
     private String name;
@@ -7,29 +9,67 @@ public class Book {
     private String author;
     private String category;
     private String publishers;
-    private String status;
+    private int quantity;
+    private Timestamp createDay;
+    private Status status;
     private String img;
 
     public Book() {
     }
 
-    public Book(int id, String name, String describe, String author, String category, String publishers, String status, String img) {
+    public Book(int id, String name, String describe, String author, String category, String publishers, int quantity, Timestamp createDay, Status status, String img) {
         this.id = id;
         this.name = name;
         this.describe = describe;
         this.author = author;
         this.category = category;
         this.publishers = publishers;
+        this.quantity = quantity;
+        this.createDay = createDay;
         this.status = status;
         this.img = img;
     }
-    public String getImg() {
-        return img;
-    }
 
-    public void setImg(String img) {
+    public Book(int id, String name, String describe, String author, String category, String publishers, int quantity, String img) {
+        this.id = id;
+        this.name = name;
+        this.describe = describe;
+        this.author = author;
+        this.category = category;
+        this.publishers = publishers;
+        this.quantity = quantity;
         this.img = img;
     }
+
+    public Book(String name, String describe, String author, String category, String publishers, int quantity, Timestamp createDay, Status status, String img) {
+        this.name = name;
+        this.describe = describe;
+        this.author = author;
+        this.category = category;
+        this.publishers = publishers;
+        this.quantity = quantity;
+        this.createDay = createDay;
+        this.status = status;
+        this.img = img;
+    }
+
+    public Book(String name, String describe, String author, String category, String publishers, int quantity, String img) {
+        this.name = name;
+        this.describe = describe;
+        this.author = author;
+        this.category = category;
+        this.publishers = publishers;
+        this.quantity = quantity;
+        this.img = img;
+    }
+
+    public Book(String name, String describe, int quantity, String img) {
+        this.name = name;
+        this.describe = describe;
+        this.quantity = quantity;
+        this.img = img;
+    }
+
     public int getId() {
         return id;
     }
@@ -78,11 +118,35 @@ public class Book {
         this.publishers = publishers;
     }
 
-    public String getStatus() {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Timestamp getCreateDay() {
+        return createDay;
+    }
+
+    public void setCreateDay(Timestamp createDay) {
+        this.createDay = createDay;
+    }
+
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

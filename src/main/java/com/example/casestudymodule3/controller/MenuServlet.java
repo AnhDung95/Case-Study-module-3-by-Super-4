@@ -72,6 +72,8 @@ private void action(HttpServletRequest req, HttpServletResponse resp) throws Ser
     }
 
     private void display(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    List<Category> categories = this.iCategoryService.getAll();
+    req.setAttribute("dskh", categories);
+    req.getRequestDispatcher("/category/all.jsp").forward(req,resp);
     }
 }

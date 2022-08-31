@@ -51,7 +51,7 @@ public class RentalBillDaoImplement implements IRentalBillDao {
     }
 
     @Override
-    public List<RentalBill> getRentalBillByIdRental(int idRetal) {
+    public List<RentalBill> getRentalBillByIdRental(int idRental) {
         return null;
     }
 }

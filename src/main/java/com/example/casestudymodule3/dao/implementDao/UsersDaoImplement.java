@@ -1,56 +1,55 @@
-package com.example.casestudymodule3.dao;
+package com.example.casestudymodule3.dao.implementDao;
 
 import com.example.casestudymodule3.connection.ConnectionDB;
+import com.example.casestudymodule3.dao.interfaceDao.IUserDao;
 import com.example.casestudymodule3.model.Role;
 import com.example.casestudymodule3.model.Users;
-import com.sun.org.apache.xerces.internal.util.Status;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class UsersDaoImplement implements IUsersDAO {
-    private final Connection connection= ConnectionDB.getConnection();
+public class UsersDaoImplement implements IUserDao {
+    private final Connection connection = ConnectionDB.getConnection();
     private static final String QUERY_ALL_USERS = "SELECT * FROM USERS";
-    private static final String QUERY_INSERT_ACCOUNT_BY_ADMIN= "INSERT INTO USERS" +
+    private static final String QUERY_INSERT_ACCOUNT_BY_ADMIN = "INSERT INTO USERS" +
             "(ACCOUNT,PASSWORD,FIRSTNAME,LASTNAME,ADDRESS,PHONE,EMAIL,ROLE) " +
             "VALUES(?,?,?,?,?,?,?,?,?,?)";
     private static final String QUERY_DEL_USERS_BY_ADMIN = "DELETE FROM USERS WHERE ID = ?";
-    private static final String QUERY_UPDATE_BY_USER = "UPDATE USERS SET PASSWORD = ?,FIRSTNAME = ?,LASTNAME = ?,ADDRESS = ?,PHONE = ?,EMAIL= ?,BIRTHDAY =? " +
+    private static final String QUERY_UPDATE_BY_USER = "UPDATE USERS SET PASSWORD = ?,FIRSTNAME = ?,LASTNAME = ?,ADDRESS = ?,PHONE = ?,EMAIL= ?" +
             "WHERE ACCOUNT = ?";
-    private static final String QUERY_UPDATE_BY_ADMIN = "UPDATE USERS SET STATUS = ? WHERE ID = ?";
+    private static final String QUERY_UPDATE_BY_ADMIN = "UPDATE USERS SET ROLE = ? WHERE ID = ?";
     private static final String QUERY_FIND_BY_ID = "SELECT * FROM USERS WHERE ID = ?";
     private static final String QUERY_FIND_PASS_BY_ACCOUNT = "SELECT PASSWORD FROM USERS WHERE ACCOUNT = ? AND EMAIL = ?";
     private static final String QUERY_FIND_BY_USER = "SELECT ID FROM USERS WHERE ACCOUNT = ? AND PASSWORD = ?";
-
+    @Override
     public List<Users> getAll() {
-        List<Users>users=new ArrayList<>();
+        List<Users> users = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(QUERY_ALL_USERS);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt(1);
-                String account = rs.getString(2);
+                String userName = rs.getString(2);
                 String password = rs.getString(3);
-                String firstname = rs.getString(4);
-                String lastname = rs.getString(5);
+                String firsName = rs.getString(4);
+                String lastName = rs.getString(5);
                 String address = rs.getString(6);
                 String phone = rs.getString(7);
                 String email = rs.getString(8);
                 Role role = Role.valueOf(rs.getString(9));
-                Status status = Status.valueOf(rs.getString(10));
-                users.add(new Users(id, account, password, firstname, lastname, address, phone, email, role));
+                users.add(new Users(id,userName,password,firsName,lastName,address,phone,email,role));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return users;
     }
 
+    @Override
     public boolean add(Users users) {
         boolean rowAdded = false;
         try {
@@ -70,11 +69,13 @@ public class UsersDaoImplement implements IUsersDAO {
         return rowAdded;
     }
 
+    @Override
     public boolean update(int id, Users users) {
         boolean rowUpdate = false;
         try {
             PreparedStatement statement = connection.prepareStatement(QUERY_UPDATE_BY_ADMIN);
-            statement.setInt(1,id);
+            statement.setString(1,String.valueOf(users.getRole()));
+            statement.setInt(2,id);
             rowUpdate = statement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,6 +83,7 @@ public class UsersDaoImplement implements IUsersDAO {
         return rowUpdate;
     }
 
+    @Override
     public boolean delete(int id) {
         boolean rowDel = false;
         try {
@@ -94,6 +96,7 @@ public class UsersDaoImplement implements IUsersDAO {
         return rowDel;
     }
 
+    @Override
     public Users findById(int id) {
         Users user = null;
         try {
@@ -101,21 +104,24 @@ public class UsersDaoImplement implements IUsersDAO {
             statement.setInt(1,id);
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
-                String account = rs.getString(2);
+                String username = rs.getString(2);
                 String password = rs.getString(3);
                 String firstname = rs.getString(4);
                 String lastname = rs.getString(5);
                 String address = rs.getString(6);
-                String phone = rs.getString(7);
+                String telephone = rs.getString(7);
                 String email = rs.getString(8);
                 Role role = Role.valueOf(rs.getString(9));
-                user = new Users(id,account,password,firstname,lastname,address,phone,email,role);
+                user = new Users(id,username,password,firstname,lastname,address,telephone,email,role);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return user ;
     }
+
+    @Override
     public String findPassByAccount(String account, String email) {
         String pass = "";
         try {
@@ -132,7 +138,9 @@ public class UsersDaoImplement implements IUsersDAO {
         }
         return pass;
     }
-    public boolean updateByUser(String account,Users users) {
+
+    @Override
+    public boolean updateByUser(String account, Users users) {
         boolean rowUpdate = false;
         try {
             PreparedStatement statement = connection.prepareStatement(QUERY_UPDATE_BY_USER);
@@ -166,7 +174,4 @@ public class UsersDaoImplement implements IUsersDAO {
         }
         return id;
     }
-
-
-
 }
