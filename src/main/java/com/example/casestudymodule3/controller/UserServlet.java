@@ -96,14 +96,14 @@ public class UserServlet extends HttpServlet {
     private void addBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String serial = request.getParameter("serial");
         String name = request.getParameter("name");
-        int categoryId = Integer.parseInt(request.getParameter("category"));
+        int Id = Integer.parseInt(request.getParameter("category"));
         int brandId = Integer.parseInt(request.getParameter("brand"));
         double price = Double.parseDouble(request.getParameter("price"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String description = request.getParameter("description");
         String imageURL = request.getParameter("imageURL");
         Product  product = new Product(serial,name,price,quantity,description,imageURL);
-        boolean check = iProductService.add(product, categoryId, brandId);
+        boolean check = iProductService.add(product, Id, brandId);
         request.setAttribute("checkAdd", check);
         List<Product> products = iProductService.getAll();
         request.setAttribute("products", products);
