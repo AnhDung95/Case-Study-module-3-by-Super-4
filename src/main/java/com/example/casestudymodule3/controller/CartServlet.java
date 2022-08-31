@@ -9,6 +9,7 @@ import com.example.casestudymodule3.service.interfaceService.IBookService;
 import com.example.casestudymodule3.service.interfaceService.IRentalService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+@WebServlet(name = "CartServlet", urlPatterns = "/cart")
 public class CartServlet extends HttpServlet {
     private final IBookService iBookService = new BookServiceImplement();
     private final List<Publishers> publishers = new PublishersServiceImplement().getAll();
