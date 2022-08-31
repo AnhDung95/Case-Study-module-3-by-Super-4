@@ -5,6 +5,7 @@ import com.example.casestudymodule3.model.Category;
 import com.example.casestudymodule3.service.implementService.CategoryServiceImplement;
 import com.example.casestudymodule3.service.interfaceService.ICategoryService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,6 +56,21 @@ private void action(HttpServletRequest req, HttpServletResponse resp) throws Ser
         iCategoryService.add(category);
         req.setAttribute("iCategoryService",iCategoryService);
         req.getRequestDispatcher("category/add.jsp").forward(req,resp);
+    }
+
+    private void showEditCategory(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        Category category = this.iCategoryService.findById(id);
+        RequestDispatcher dispatcher;
+        if (category == null) {
+            dispatcher = req.getRequestDispatcher("/category/error-404.jsp");
+        } else {
+            req.setAttribute("category",category);
+            dispatcher = req.getRequestDispatcher("/category/edit.jsp");
+        }
+        try {
+            dispatcher.forward();
+        }
     }
 
     private void editCategory(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
