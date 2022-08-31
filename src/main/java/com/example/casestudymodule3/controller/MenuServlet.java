@@ -1,7 +1,5 @@
 package com.example.casestudymodule3.controller;
 
-import com.example.casestudymodule3.dao.interfaceDao.ICategoryDao;
-import com.example.casestudymodule3.model.Category;
 import com.example.casestudymodule3.service.implementService.CategoryServiceImplement;
 import com.example.casestudymodule3.service.interfaceService.ICategoryService;
 
