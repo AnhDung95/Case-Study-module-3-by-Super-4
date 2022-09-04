@@ -1,9 +1,18 @@
 package com.example.casestudymodule3.controller;
 
+<<<<<<< HEAD
 import com.example.casestudymodule3.dao.interfaceDao.ICategoryDao;
+=======
+import com.example.casestudymodule3.model.Book;
+>>>>>>> master
 import com.example.casestudymodule3.model.Category;
+import com.example.casestudymodule3.model.Publishers;
+import com.example.casestudymodule3.service.implementService.BookServiceImplement;
 import com.example.casestudymodule3.service.implementService.CategoryServiceImplement;
+import com.example.casestudymodule3.service.implementService.PublishersServiceImplement;
+import com.example.casestudymodule3.service.interfaceService.IBookService;
 import com.example.casestudymodule3.service.interfaceService.ICategoryService;
+import com.example.casestudymodule3.service.interfaceService.IPublishersService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,52 +24,61 @@ import java.util.List;
 
 @WebServlet(name = "MenuServlet", urlPatterns = "/books")
 public class MenuServlet extends HttpServlet {
+    private final IBookService bookService = new BookServiceImplement();
+    private final IPublishersService publishersService = new PublishersServiceImplement();
     private final ICategoryService iCategoryService = new CategoryServiceImplement();
+<<<<<<< HEAD
     private final List<Category> categorie = iCategoryService.getAll();
+=======
+    private final List<Publishers> publishers = publishersService.getAll();
+    private final List<Category> categories = iCategoryService.getAll();
+>>>>>>> master
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        action(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        action(request,response);
     }
 
-private void action(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    String action = req.getParameter("action");
+private void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String action = request.getParameter("action");
     if(action == null) {
     action = "";
     }
     switch (action) {
-        case "addCategory":
-            addCategory(req,resp);
+        case "store":
+            storeAll(request,response);
             break;
-        case "editCategory":
-            editCategory(req,resp);
+        case "textbooks":
+            storeTextbooks(request,response);
             break;
-        case "deleteCategory":
-            deleteCategory(req,resp);
+        case "novel":
+            storeNovel(request,response);
             break;
-        default:
-            display(req,resp);
+        case "comic":
+            storeComic(request,response);
+            break;
+        case "search":
+            findByKeyword(request,response);
+            break;
     }
     }
 
-    private void addCategory(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
-        String name = req.getParameter("name");
-        Category category = new Category(id, name);
-        iCategoryService.add(category);
-        req.setAttribute("iCategoryService",iCategoryService);
-        req.getRequestDispatcher("category/add.jsp").forward(req,resp);
-    }
-
-    private void editCategory(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void findByKeyword(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+        String keyword = request.getParameter("keyword");
+        List<Book> books = bookService.findByKeyword(keyword);
+        request.setAttribute("publishers",publishers);
+        request.setAttribute("categories",categories);
+        request.setAttribute("book",books);
+        request.getRequestDispatcher("client/view/store.jsp").forward(request,response);
 
     }
 
+<<<<<<< HEAD
     private void deleteCategory(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     int id= Integer.parseInt(req.getParameter("id"));
     boolean checkDelete = iCategoryService.delete(id);
@@ -76,4 +94,43 @@ private void action(HttpServletRequest req, HttpServletResponse resp) throws Ser
     req.setAttribute("dskh", categories);
     req.getRequestDispatcher("/category/all.jsp").forward(req,resp);
     }
+=======
+    private void storeComic(HttpServletRequest request, HttpServletResponse response)throws ServletException,IOException {
+        List<Book> books = bookService.findByKeyword("truyen tranh");
+        request.setAttribute("activen4","active");
+        request.setAttribute("publishers",publishers);
+        request.setAttribute("categories",categories);
+        request.setAttribute("book", books);
+        request.getRequestDispatcher("client/view/store.jsp").forward(request,response);
+    }
+
+    private void storeNovel(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+        List<Book> books = bookService.findByKeyword("tieu thuyet");
+        request.setAttribute("activen3","active");
+        request.setAttribute("publishers",publishers);
+        request.setAttribute("categories",categories);
+        request.setAttribute("book", books);
+        request.getRequestDispatcher("client/view/store.jsp").forward(request,response);
+    }
+
+    private void storeTextbooks(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+        List<Book> books = bookService.findByKeyword("sach giao khoa");
+        request.setAttribute("activen2","active");
+        request.setAttribute("publishers",publishers);
+        request.setAttribute("categories",categories);
+        request.setAttribute("book", books);
+        request.getRequestDispatcher("client/view/store.jsp").forward(request,response);
+    }
+
+    private void storeAll(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+        List<Book> books = bookService.getAll();
+        request.setAttribute("activen1","active");
+        request.setAttribute("publishers",publishers);
+        request.setAttribute("categories",categories);
+        request.setAttribute("book",books);
+        request.getRequestDispatcher("client/view/store.jsp").forward(request,response);
+
+    }
+
+>>>>>>> master
 }

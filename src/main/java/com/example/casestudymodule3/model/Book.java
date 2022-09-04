@@ -30,6 +30,14 @@ public class Book {
         this.img = img;
     }
 
+    public Book(String name, String describe, String author, int quantity, String img) {
+        this.name = name;
+        this.describe = describe;
+        this.author = author;
+        this.quantity = quantity;
+        this.img = img;
+    }
+
     public Book(int id, String name, String describe, String author, String category, String publishers, int quantity, String img) {
         this.id = id;
         this.name = name;
