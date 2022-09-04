@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "LoginServlet", urlPatterns = "/sign-up")
+@WebServlet(name = "LoginServlet", urlPatterns = "/auth")
 public class LoginServlet extends HttpServlet {
     private final IUsersService iUsersService = new UsersServiceImplement();
     private final IBookService iBookService = new BookServiceImplement();
@@ -49,9 +49,11 @@ public class LoginServlet extends HttpServlet {
     }
 
     private void registration(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String account = req.getParameter("username");
+        String password= req.getParameter("password");
         Users u = new Users(
-                req.getParameter("username"),
-                req.getParameter("password"),
+               account,
+                password,
                 "",
                 "",
                 "",
@@ -60,6 +62,10 @@ public class LoginServlet extends HttpServlet {
                 Role.USER
         );
         iUsersService.add(u);
+        HttpSession session = req.getSession();
+//            session.getAttribute("userID", userID);
+        session.setAttribute("account", account);
+        session.setAttribute("password", password);
         resp.sendRedirect("/admin?action=showBook");
 //        RequestDispatcher rd = req.getRequestDispatcher("/admin/book.jsp");
 //        rd.forward(req, resp);
@@ -68,8 +74,11 @@ public class LoginServlet extends HttpServlet {
     public void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String account = req.getParameter("account");
         String password = req.getParameter("password");
+        System.out.println(account);
+        System.out.println(password);
         Users users = new Users(account, password);
         int userID = iUsersService.findByUser(users);
+        System.out.println(userID);
         if (userID == -1) {
             RequestDispatcher dispatcher = req.getRequestDispatcher("login/index.jsp");
             String message = "Account or password is invalid";
@@ -86,7 +95,7 @@ public class LoginServlet extends HttpServlet {
             if (role == Role.ADMIN) {
                 resp.sendRedirect("/admin");
             } else if (role == Role.USER) {
-                resp.sendRedirect("/book");
+                resp.sendRedirect("/admin?action=showBook");
             }
         }
     }

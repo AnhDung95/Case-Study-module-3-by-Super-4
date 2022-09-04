@@ -80,11 +80,11 @@
         }
     </style>
     <div id="wrapper">
-        <form  action="index.jsp">
+        <form  action="/auth?action=login" method="post">
             <h3>Đăng nhập</h3>
             <div class="form-group">
-                <input type="text" name="email" required>
-                <label name="email"></label>
+                <input type="text" name="account" required>
+                <label name="account"></label>
             </div>
             <div class="form-group">
                 <input type="password" name="password" required>

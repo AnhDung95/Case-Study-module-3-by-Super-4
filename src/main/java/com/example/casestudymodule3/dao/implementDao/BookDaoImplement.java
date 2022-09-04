@@ -118,6 +118,7 @@ public class BookDaoImplement implements IBookDao {
                 String publishers = rs.getString(6);
                 int quantity = rs.getInt(7);
                 String imgURL = rs.getString(8);
+//                Timestamp createDay=
                 books.add(new Book(id,name,describe,author,category,publishers,quantity,imgURL));
             }
         } catch (SQLException e) {
