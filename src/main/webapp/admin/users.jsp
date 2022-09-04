@@ -17,12 +17,12 @@
   <h3>All User</h3>
   <p>Thông tin tất cả tài khoản hiện có được hiển thị ở đây !!</p>
 </div>
-<c:if test="${requestScope.checkActive == true}">
-  <p>Kích hoạt active tài khoản thành công !!</p>
-</c:if>
-<c:if test="${requestScope.checkBlock == true}">
-  <p>Đã block tài khoản thành công !!</p>
-</c:if>
+<%--<c:if test="${requestScope.checkActive == true}">--%>
+<%--  <p>Kích hoạt active tài khoản thành công !!</p>--%>
+<%--</c:if>--%>
+<%--<c:if test="${requestScope.checkBlock == true}">--%>
+<%--  <p>Đã block tài khoản thành công !!</p>--%>
+<%--</c:if>--%>
 <c:if test="${requestScope.checkDelUser}">
   <h1 class="danger"> Xóa tài khoản người dùng thành công  !!!</h1>
 </c:if>
@@ -66,8 +66,6 @@
           <td>${users.birthDate}</td>
           <td>${users.role}</td>
           <td>${users.status}</td>
-          <td><a href="/admin?action=blocked&id=${users.id}" class="btn btn-warning">Blocked</a></td>
-          <td><a href="/admin?action=active&id=${users.id}" class="btn btn-info">Active</a></td>
           <td><a href="/admin?action=deleteUser&id=${users.id}" class="btn btn-info">Delete</a></td>
           <td><a href="/admin?action=editUser&id=${users.id}" class="btn btn-info">Edit</a></td>
         </tr>

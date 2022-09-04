@@ -1,10 +1,6 @@
 package com.example.casestudymodule3.controller;
 
-<<<<<<< HEAD
-import com.example.casestudymodule3.dao.interfaceDao.ICategoryDao;
-=======
 import com.example.casestudymodule3.model.Book;
->>>>>>> master
 import com.example.casestudymodule3.model.Category;
 import com.example.casestudymodule3.model.Publishers;
 import com.example.casestudymodule3.service.implementService.BookServiceImplement;
@@ -27,12 +23,8 @@ public class MenuServlet extends HttpServlet {
     private final IBookService bookService = new BookServiceImplement();
     private final IPublishersService publishersService = new PublishersServiceImplement();
     private final ICategoryService iCategoryService = new CategoryServiceImplement();
-<<<<<<< HEAD
-    private final List<Category> categorie = iCategoryService.getAll();
-=======
     private final List<Publishers> publishers = publishersService.getAll();
     private final List<Category> categories = iCategoryService.getAll();
->>>>>>> master
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,28 +36,28 @@ public class MenuServlet extends HttpServlet {
         action(request,response);
     }
 
-private void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String action = request.getParameter("action");
-    if(action == null) {
-    action = "";
-    }
-    switch (action) {
-        case "store":
-            storeAll(request,response);
-            break;
-        case "textbooks":
-            storeTextbooks(request,response);
-            break;
-        case "novel":
-            storeNovel(request,response);
-            break;
-        case "comic":
-            storeComic(request,response);
-            break;
-        case "search":
-            findByKeyword(request,response);
-            break;
-    }
+    private void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if(action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "store":
+                storeAll(request,response);
+                break;
+            case "textbooks":
+                storeTextbooks(request,response);
+                break;
+            case "novel":
+                storeNovel(request,response);
+                break;
+            case "comic":
+                storeComic(request,response);
+                break;
+            case "search":
+                findByKeyword(request,response);
+                break;
+        }
     }
 
     private void findByKeyword(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
@@ -78,23 +70,6 @@ private void action(HttpServletRequest request, HttpServletResponse response) th
 
     }
 
-<<<<<<< HEAD
-    private void deleteCategory(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    int id= Integer.parseInt(req.getParameter("id"));
-    boolean checkDelete = iCategoryService.delete(id);
-    List<Category> categories = iCategoryService.getAll();
-    req.setAttribute("categories", categories);
-    req.setAttribute("checkDelete", checkDelete);
-    req.setAttribute("category",categorie);
-    req.getRequestDispatcher("category/delete.jsp").forward(req,resp);
-    }
-
-    private void display(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    List<Category> categories = this.iCategoryService.getAll();
-    req.setAttribute("dskh", categories);
-    req.getRequestDispatcher("/category/all.jsp").forward(req,resp);
-    }
-=======
     private void storeComic(HttpServletRequest request, HttpServletResponse response)throws ServletException,IOException {
         List<Book> books = bookService.findByKeyword("truyen tranh");
         request.setAttribute("activen4","active");
@@ -132,5 +107,4 @@ private void action(HttpServletRequest request, HttpServletResponse response) th
 
     }
 
->>>>>>> master
 }
