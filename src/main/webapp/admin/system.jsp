@@ -8,12 +8,12 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <jsp:include page="${url}/head.jsp"/>
+<%--  <jsp:include page="${url}/head.jsp"/>--%>
 </head>
 <body>
-<jsp:include page="${url}/header.jsp"/>
+<%--<jsp:include page="${url}/header.jsp"/>--%>
 <div class="container-fluid">
-  <h3>All Product</h3>
+  <h3>All Books</h3>
   <p>Thông tin tất cả sản phẩm hiện có được hiển thị ở đây !!</p>
 </div>
 
@@ -31,7 +31,7 @@
         <td> CREATE DAY</td>
         <td> IMAGE</td>
       </tr>
-      <c:forEach var="book" items="${requestScope.book}">
+      <c:forEach var="book" items="${requestScope.books}">
         <tr>
           <td>${book.id}</td>
           <td>${book.name}</td>
@@ -49,7 +49,7 @@
 </div>
 <!--    display user-->
 <div class="container-fluid">
-  <h3>All User</h3>
+  <h3>All Users</h3>
   <p>Thông tin tất cả tài khoản hiện có được hiển thị ở đây !!</p>
 </div>
 <div class="container-fluid col-md-12">

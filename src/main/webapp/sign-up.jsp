@@ -76,7 +76,7 @@
 </head>
 <body>
 <div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form action="/admin/system.jsp" method="post">
         <h2>Sign Up</h2>
         <div class="form-group">
             <input type="text" class="form-control" name="username" placeholder="Username" required="required">
