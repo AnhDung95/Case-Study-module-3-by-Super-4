@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProductServlet", urlPatterns = "/home")
+@WebServlet(name = "BookServlet", urlPatterns = "/home")
 public class BookServlet extends HttpServlet {
     private final IBookService bookService = new BookServiceImplement();
     private final IReviewService reviewService = new ReviewServiceImplement();

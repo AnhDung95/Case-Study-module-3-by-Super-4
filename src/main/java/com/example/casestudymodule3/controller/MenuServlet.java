@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "MenuServlet", urlPatterns = "/books")
+@WebServlet(name = "MenuServlet", urlPatterns = "/menu")
 public class MenuServlet extends HttpServlet {
     private final IBookService bookService = new BookServiceImplement();
     private final IPublishersService publishersService = new PublishersServiceImplement();

@@ -48,7 +48,7 @@
         <div>
             <ul class="nav navbar-nav">
                 <li><a href = "#">Trang Chủ</a></li>
-                <li><a href = "#">Giỏ Hàng</a></li>
+                <li><a href = "/client/view/cart.jsp">Giỏ Hàng</a></li>
                 <li><a href = "#">Thời Gian Thuê Sách</a></li>
                 <li><a href = "#">Lịch Sử Thuê</a></li>
                 <li class="dropdown">
@@ -94,9 +94,9 @@
                     <form class = "navbar-form navbar-left" role = "search">
 
                         <div class = "form-group">
-                            <input type = "text" class = "form-control" placeholder = "Search">
+                            <input type = "text" href="result.jsp" class = "form-control" placeholder = "Search">
                         </div>
-                        <button type = "submit" class = "btn btn-default">Search</button>
+                        <button type = "submit"  class = "btn btn-default">Search</button>
 
                     </form>
                 </div>
