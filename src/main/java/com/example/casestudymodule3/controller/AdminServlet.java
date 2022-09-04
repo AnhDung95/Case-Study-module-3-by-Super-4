@@ -117,7 +117,7 @@ public class AdminServlet extends HttpServlet {
         List<Users> users = iUsersService.getAll();
         List<Book> books = iBookService.getAll();
         request.setAttribute("users", users);
-        request.setAttribute("book", books);
+        request.setAttribute("books", books);
         request.getRequestDispatcher("admin/system.jsp").forward(request,response);
     }
 
@@ -174,10 +174,10 @@ public class AdminServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         boolean check = iBookService.update(id ,book, categoryId,publishersId);
         request.setAttribute("checkEdit", check);
-        List<Book> products = iBookService.getAll();
+        List<Book> books = iBookService.getAll();
         request.setAttribute("categories",categories);
         request.setAttribute("publishers",publishers);
-        request.setAttribute("book", book);
+        request.setAttribute("books", books);
         request.getRequestDispatcher("admin/book.jsp").forward(request,response);
     }
 
@@ -202,7 +202,7 @@ public class AdminServlet extends HttpServlet {
         boolean check = iBookService.add(book,categoryId,publishersId);
         request.setAttribute("checkAdd",check);
         List<Book> books = iBookService.getAll();
-        request.setAttribute("book",books);
+        request.setAttribute("books",books);
         request.setAttribute("category",categories);
         request.setAttribute("publishers",publishers);
         request.getRequestDispatcher("admin/book.jsp").forward(request,response);
@@ -210,7 +210,7 @@ public class AdminServlet extends HttpServlet {
 
     private void getAllBook(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
         List<Book> books = iBookService.getAll();
-        request.setAttribute("book",books);
+        request.setAttribute("books",books);
         request.setAttribute("category",categories);
         request.setAttribute("publishers",publishers);
         request.getRequestDispatcher("admin/book.jsp").forward(request,response);

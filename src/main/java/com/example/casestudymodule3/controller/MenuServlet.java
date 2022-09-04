@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "MenuServlet", urlPatterns = "/books")
+@WebServlet(name = "MenuServlet", urlPatterns = "/menu")
 public class MenuServlet extends HttpServlet {
     private final IBookService bookService = new BookServiceImplement();
     private final IPublishersService publishersService = new PublishersServiceImplement();
@@ -36,28 +36,28 @@ public class MenuServlet extends HttpServlet {
         action(request,response);
     }
 
-private void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String action = request.getParameter("action");
-    if(action == null) {
-    action = "";
-    }
-    switch (action) {
-        case "store":
-            storeAll(request,response);
-            break;
-        case "textbooks":
-            storeTextbooks(request,response);
-            break;
-        case "novel":
-            storeNovel(request,response);
-            break;
-        case "comic":
-            storeComic(request,response);
-            break;
-        case "search":
-            findByKeyword(request,response);
-            break;
-    }
+    private void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if(action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "store":
+                storeAll(request,response);
+                break;
+            case "textbooks":
+                storeTextbooks(request,response);
+                break;
+            case "novel":
+                storeNovel(request,response);
+                break;
+            case "comic":
+                storeComic(request,response);
+                break;
+            case "search":
+                findByKeyword(request,response);
+                break;
+        }
     }
 
     private void findByKeyword(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{

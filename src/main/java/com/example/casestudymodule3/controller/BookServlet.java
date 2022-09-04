@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProductServlet", urlPatterns = "/home")
+@WebServlet(name = "BookServlet", urlPatterns = "/home")
 public class BookServlet extends HttpServlet {
     private final IBookService bookService = new BookServiceImplement();
     private final IReviewService reviewService = new ReviewServiceImplement();
@@ -123,7 +123,7 @@ public class BookServlet extends HttpServlet {
         request.setAttribute("publishers",publishers);
         request.setAttribute("reviews",reviews);
         request.setAttribute("book",book);
-        request.getRequestDispatcher("client/view/book.jsp").forward(request,response);
+        request.getRequestDispatcher("admin/book.jsp").forward(request,response);
     }
 
 }
