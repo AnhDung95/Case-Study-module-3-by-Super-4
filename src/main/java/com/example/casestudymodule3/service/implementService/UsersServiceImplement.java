@@ -36,6 +36,11 @@ public class UsersServiceImplement implements IUsersService {
     }
 
     @Override
+    public boolean add(Users users, int Id) {
+        return false;
+    }
+
+    @Override
     public String findPassByAccount(String account, String email) {
         return iUserDao.findPassByAccount(account,email);
     }

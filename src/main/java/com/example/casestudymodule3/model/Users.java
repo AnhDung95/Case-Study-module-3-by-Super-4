@@ -39,7 +39,7 @@ public class Users {
         this.password = password;
     }
 
-    public Users() {
+    public Users(int id, String account, String password, String firstName, String lastName, String address, String phone, String email) {
     }
 
     public int getId() {

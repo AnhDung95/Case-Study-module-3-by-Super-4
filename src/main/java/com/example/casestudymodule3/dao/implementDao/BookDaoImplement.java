@@ -23,6 +23,7 @@ public class BookDaoImplement implements IBookDao {
             "SELECT book.name,book.`describe`,book.author,category.name,publishers.name,book.quantity,book.img,book.create,book.status " +
                     "FROM book JOIN category ON book.category_id = category.id JOIN publishers ON book.publishers_id = publishers.id " +
                     "WHERE bool.id = ?;";
+
     private static final String QUERY_DEL_BOOK = "UPDATE book SET STATUS = \"old\" WHERE id = ?";
     private static final String QUERY_UPDATE_BOOK = "UPDATE BOOK SET NAME = ?,DESCRIBE = ?,AUTHOR = ?, CATEGORY_ID = ?,PUBLISHERS_ID = ?,QUANTITY = ?,IMG = ? WHERE ID = ?;";
     private static final String QUERY_FIND_BY_KEYWORD = "SELECT book.id,book.name,book.`describe`,book.author,category.name,publishers.name,book.quantity,book.img FROM book JOIN category ON book.category_id = category.id JOIN publishers ON book.publishers_id = publishers.id WHERE (category.name LIKE ? or book.name LIKE ? or publishers.name LIKE ?) AND book.STATUS = \"new\";";

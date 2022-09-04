@@ -9,6 +9,9 @@ import java.util.List;
 
 public class BookServiceImplement implements IBookService {
     private final IBookDao bookDao = new BookDaoImplement();
+//    public List<Book> findByPublishers(String publishers){
+//        return bookDao.findByPublishers(publishers);
+//    }
 
     @Override
     public List<Book> findByKeyword(String keyword) {
@@ -19,7 +22,7 @@ public class BookServiceImplement implements IBookService {
         return bookDao.update(id,book,idCategory,idPublishers);
     }
     @Override
-    public boolean add(Book book, int idCategory) {
+    public boolean add(Book book, int idCategory, int idPublishers) {
         return bookDao.add(book, idCategory, idPublishers);
     }
 

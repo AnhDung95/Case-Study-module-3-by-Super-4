@@ -21,7 +21,7 @@ public interface IBookService extends IGeneralService<Book> {
 
     boolean update(int id, Book book, int idCategory, int idPublishers);
 
-    boolean add(Book book , int idCategory);
+    boolean add(Book book , int idCategory,int idPublishers);
     List<Book> filter(String categoryName,String publishersName);
 
     @Override

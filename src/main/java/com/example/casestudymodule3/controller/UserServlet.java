@@ -11,6 +11,7 @@ import com.example.casestudymodule3.service.interfaceService.IBookService;
 import com.example.casestudymodule3.service.interfaceService.ICategoryService;
 import com.example.casestudymodule3.service.interfaceService.IUsersService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,14 +22,12 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "UserServlet", urlPatterns = "/user")
+@WebServlet(name = "UserServlet", urlPatterns = "/users")
 public class UserServlet extends HttpServlet {
     private final IUsersService iUsersService = new UsersServiceImplement();
     private final IBookService iBookService = new BookServiceImplement();
 //        chua co BookServiceImplement
     private final ICategoryService categoryService = new CategoryServiceImplement();
-    //    private final IBrandService brandService = new BrandServiceImplement();
-//    private final List<Brand> brands = brandService.getAll();
     private final List<Category> categories = categoryService.getAll();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         action(request, response);
@@ -36,7 +35,6 @@ public class UserServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         action(request, response);
-
     }
     private void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -53,39 +51,12 @@ public class UserServlet extends HttpServlet {
             case "delete":
                 deleteBooks(request,response);
                 break;
-
-//            case "showFormEdit":
-//                editGet(request,response);
-//                break;
             case "edit":
                 editBooks(request,response);
                 break;
-            case "delete":
-                deleteBooks(request,response);
+            case "findByPublishers":
+                findBooksByCategory(request,response);
                 break;
-//            case "laptops":
-//                getAllLaptops(request,response);
-//                break;
-//            case "smartphone":
-//                getAllSmartPhones(request,response);
-//                break;
-//            case "tablet":
-//                getAllTablets(request,response);
-//                break;
-            case "users":
-                getAllUsers(request,response);
-                break;
-//            case "admins":
-//                getAllAdmins(request,response);
-//                break;
-            case "customers":
-                getAllCustomer(request,response);
-                break;
-            case "active":
-                activeAccount(request,response);
-                break;
-            case "blocked":
-                blockedAccount(request,response);
             default:
                 display(request,response);
         }
@@ -95,26 +66,24 @@ public class UserServlet extends HttpServlet {
         List<Book> books = iBookService.getAll();
         request.setAttribute("books", books);
         request.setAttribute("categories", categories);
-        request.getRequestDispatcher("user/books.jsp").forward(request,response);
+        request.getRequestDispatcher("admin/books.jsp").forward(request,response);
     }
 
     private void addBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int Id = Integer.parseInt(request.getParameter("Id"));
         String name = request.getParameter("name");
         String describe = request.getParameter("describe");
         String author = request.getParameter("author");
-        String category = request.getParameter("category");
-        String publishers = request.getParameter("publishers");
+        int idCategory = Integer.parseInt(request.getParameter("category"));
+        int idPublishers = Integer.parseInt(request.getParameter("publishers"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-
-        String img = request.getParameter("imageURL");
-        Book book = new Book(Id,name,describe,author,category,publishers,quantity,img);
-        boolean check = iBookService.add(book,Id);
+        String img = request.getParameter("img");
+        Book book = new Book(name,describe,author,quantity,img);
+        boolean check = iBookService.add(book,idCategory,idPublishers);
         request.setAttribute("checkAdd", check);
         List<Book> books = iBookService.getAll();
         request.setAttribute("books", books);
         request.setAttribute("categories",categories);
-        request.getRequestDispatcher("user/books.jsp").forward(request,response);
+        request.getRequestDispatcher("admin/books.jsp").forward(request,response);
     }
 
     private void deleteBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -124,123 +93,42 @@ public class UserServlet extends HttpServlet {
         request.setAttribute("books", books);
         request.setAttribute("checkDel", checkDelete);
         request.setAttribute("categories",categories);
-        request.getRequestDispatcher("user/books.jsp").forward(request,response);
+        request.getRequestDispatcher("admin/books.jsp").forward(request,response);
+    }
+        private void editBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String describe = request.getParameter("describe");
+        String author = request.getParameter("author");
+        int idCategory = Integer.parseInt(request.getParameter("category"));
+        int idPublishers = Integer.parseInt(request.getParameter("publishers"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String img = request.getParameter("img");
+        Book book = new Book(name,describe,author,quantity,img);
+        boolean check = iBookService.update(id,book,idCategory,idPublishers);
+        request.setAttribute("checkEdit", check);
+        List<Book> books = iBookService.getAll();
+        request.setAttribute("categories",categories);
+        request.setAttribute("books",books);
+        request.getRequestDispatcher("admin/books.jsp").forward(request,response);
     }
 
-//    private void blockedAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        Users users = iUsersService.findById(id);
-////        users.setStatus(Status.BLOCKED);
-//        boolean check = iUsersService.update(id,users);
-//        request.setAttribute("checkBlock",check);
-//        getAllUsers(request,response);
-//    }
-//
-//    private void activeAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        Users users = iUsersService.findById(id);
-////        users.setStatus(Status.ACTIVE);
-//        boolean check = iUsersService.update(id,users);
-//        request.setAttribute("checkActive",check);
-//        getAllUsers(request,response);
-//    }
-//
-//
-//    private void getAllTablets(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        List<Book> tablets = IBookService.findByKeyword("tablet");
-//        request.setAttribute("products", tablets);
-//        request.setAttribute("categories",categories);
-//        request.setAttribute("brands",brands);
-//        request.getRequestDispatcher("admin/products.jsp").forward(request,response);
-//    }
-//
-//    private void getAllSmartPhones(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        List<Product> smartPhones = iProductService.findByKeyword("SmartPhone");
-//        request.setAttribute("products", smartPhones);
-//        request.setAttribute("categories",categories);
-//        request.setAttribute("brands",brands);
-//        request.getRequestDispatcher("admin/products.jsp").forward(request,response);
-//    }
-//
-//    private void getAllLaptops(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        List<Product> laptops = iProductService.findByKeyword("laptop");
-//        request.setAttribute("products", laptops);
-//        request.setAttribute("categories",categories);
-//        request.setAttribute("brands",brands);
-//        request.getRequestDispatcher("admin/products.jsp").forward(request,response);
-//    }
-//
-//    private void getAllCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        List<Users> users = iUsersService.getAll();
-//        List<Users> customers = new ArrayList<>();
-//        for (int i = 0; i < users.size(); i++) {
-//            if (users.get(i).getRole() == Role.USER){
-//                customers.add(users.get(i));
-//            }
-//        }
-//        request.setAttribute("users", customers);
-//        request.getRequestDispatcher("admin/users.jsp").forward(request,response);
-//    }
-//
-//    private void getAllAdmins(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        List<Users> users = iUsersService.getAll();
-//        List<Users> admins = new ArrayList<>();
-//        for (int i = 0; i < users.size(); i++) {
-//            if (users.get(i).getRole() == Role.ADMIN){
-//                admins.add(users.get(i));
-//            }
-//        }
-//        request.setAttribute("users", admins);
-//        request.getRequestDispatcher("admin/users.jsp").forward(request,response);
-//    }
-//
-//    private void getAllUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        List<Users> users = iUsersService.getAll();
-//        request.setAttribute("users", users);
-//        request.getRequestDispatcher("admin/users.jsp").forward(request,response);
-//    }
-//
-//    private void display(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        List<Users> users = iUsersService.getAll();
-//        List<Product> products = iProductService.getAll();
-//        request.setAttribute("users", users);
-//        request.setAttribute("products", products);
-//        request.getRequestDispatcher("admin/system.jsp").forward(request,response);
-//
-//    }
-//
-//
-//
-//
-//    private void editGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        Product product = iProductService.findById(id);
-//        request.setAttribute("brands",brands);
-//        request.setAttribute("categories",categories);
-//        request.setAttribute("product", product);
-//        request.getRequestDispatcher("admin/edit.jsp").forward(request,response);
-//    }
-//
-//    private void editBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String serial = request.getParameter("serial");
-//        String name = request.getParameter("name");
-//        int categoryId = Integer.parseInt(request.getParameter("category"));
-//        int brandId = Integer.parseInt(request.getParameter("brand"));
-//        double price = Double.parseDouble(request.getParameter("price"));
-//        int quantity = Integer.parseInt(request.getParameter("quantity"));
-//        String description = request.getParameter("description");
-//        String imageURL = request.getParameter("imageURL");
-//        Product product = new Product(serial,name,price,quantity,description,imageURL);
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        boolean check = iProductService.update(id , product, categoryId, brandId);
-//        request.setAttribute("checkEdit", check);
-//        List<Product> products = iProductService.getAll();
-//        request.setAttribute("categories",categories);
-//        request.setAttribute("brands",brands);
-//        request.setAttribute("products", products);
-//        request.getRequestDispatcher("admin/products.jsp").forward(request,response);
-//    }
-//
+    private void findBooksByCategory (HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException{
+//        String category =request.getParameter(("category"));
+        List<Book> books = iBookService.findByKeyword("category");
+        request.setAttribute("books", books);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/books.jsp");
+        dispatcher.forward(request,response);
+    }
+
+    private void display(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Users> users = iUsersService.getAll();
+        List<Book> books = iBookService.getAll();
+        request.setAttribute("users", users);
+        request.setAttribute("books", books);
+        request.getRequestDispatcher("admin/system.jsp").forward(request,response);
+    }
+
 
 }
 
