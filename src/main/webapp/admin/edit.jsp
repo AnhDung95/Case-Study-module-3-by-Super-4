@@ -8,10 +8,10 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <jsp:include page="${url}/head.jsp"/>
+<%--  <jsp:include page="${url}/head.jsp"/>--%>
 </head>
 <body>
-<jsp:include page="${url}/header.jsp"/>
+<%--<jsp:include page="${url}/header.jsp"/>--%>
 
 <div class="container-fluid">
   <h3>EDIT BOOK</h3>

@@ -58,7 +58,7 @@
           <td>${books.createDay}</td>
           <td><img src="${books.img}" style="height: 100px"></td>
           <td><a href="/admin?action=delete&id=${books.id}" class="btn btn-warning">Delete</a></td>
-          <td><a href="/admin?action=edit&id=${books.id}" class="btn btn-info">Edit</a></td>
+          <td><a href="/admin?action=showFormEdit&id=${books.id}" class="btn btn-info">Edit</a></td>
         </tr>
       </c:forEach>
     </table>
@@ -89,7 +89,7 @@
         </div>
         <div class="input-group mt-3 mb-3">
           <select name="category">
-            <c:forEach items="${requestScope.categories}" var="cate">
+            <c:forEach items="${requestScope.category}" var="cate">
               <option value="${cate.id}">${cate.name}</option>
             </c:forEach>
           </select>

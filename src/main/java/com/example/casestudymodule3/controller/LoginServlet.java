@@ -9,30 +9,33 @@ import com.example.casestudymodule3.service.interfaceService.IUsersService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+@WebServlet(name = "LoginServlet", urlPatterns = "/sign-up")
 public class LoginServlet extends HttpServlet {
     private final IUsersService iUsersService = new UsersServiceImplement();
     private final IBookService iBookService = new BookServiceImplement();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+//        super.doGet(req, resp);
         action(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+//        super.doPost(req, resp);
         action(req, resp);
     }
 
     private void action(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
+        System.out.println(action);
         if (action == null)
             action = "";
         switch (action) {
@@ -46,6 +49,20 @@ public class LoginServlet extends HttpServlet {
     }
 
     private void registration(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Users u = new Users(
+                req.getParameter("username"),
+                req.getParameter("password"),
+                "",
+                "",
+                "",
+                "",
+                req.getParameter("email"),
+                Role.USER
+        );
+        iUsersService.add(u);
+        resp.sendRedirect("/admin?action=showBook");
+//        RequestDispatcher rd = req.getRequestDispatcher("/admin/book.jsp");
+//        rd.forward(req, resp);
     }
 
     public void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -69,7 +86,7 @@ public class LoginServlet extends HttpServlet {
             if (role == Role.ADMIN) {
                 resp.sendRedirect("/admin");
             } else if (role == Role.USER) {
-                resp.sendRedirect("/home");
+                resp.sendRedirect("/book");
             }
         }
     }

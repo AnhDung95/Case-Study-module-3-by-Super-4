@@ -123,7 +123,7 @@ public class BookServlet extends HttpServlet {
         request.setAttribute("publishers",publishers);
         request.setAttribute("reviews",reviews);
         request.setAttribute("book",book);
-        request.getRequestDispatcher("client/view/book.jsp").forward(request,response);
+        request.getRequestDispatcher("admin/book.jsp").forward(request,response);
     }
 
 }
