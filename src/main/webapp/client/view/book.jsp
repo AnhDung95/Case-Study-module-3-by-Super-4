@@ -26,19 +26,19 @@
     <div class="row" style="height: 500px">
       <!-- Product main img -->
       <div class="col-md-6">
-        <div id="product-main-img">
-          <div class="product-preview">
-            <img src="${product.getImg()}" alt="">
+        <div id="book-main-img">
+          <div class="book-preview">
+            <img src="${book.getImg()}" alt="">
           </div>
         </div>
       </div>
 
       <!-- Product details -->
       <div class="col-md-6">
-        <div class="product-details">
-          <h2 class="product-name">${product.getName()}</h2>
+        <div class="book-details">
+          <h2 class="product-name">${book.getName()}</h2>
           <div>
-            <div class="product-rating">
+            <div class="book-rating">
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
@@ -48,17 +48,17 @@
             <a class="review-link" href="#reviews">${reviews.size()} Review(s) | Add your review</a>
           </div>
           <div>
-            <h3 class="product-price">$ ${product.getPrice()} VND <del class="product-old-price">${product.getPrice() * 1.1}</del></h3>
-            <span class="product-available">
-                            <c:if test="${product.getQuantity() > 0}">
+            <h3 class="book-price">$ ${book.getPrice()} VND <del class="book-old-price">${book.getPrice() * 1.1}</del></h3>
+            <span class="book-available">
+                            <c:if test="${book.getQuantity() > 0}">
                               In Stock
                             </c:if>
-                            <c:if test="${product.getQuantity() <= 0}">
+                            <c:if test="${book.getQuantity() <= 0}">
                               <del> Sold out </del>
                             </c:if>
                         </span>
           </div>
-          <form method="post" action="/cart?action=add&id=${product.id}">
+          <form method="post" action="/cart?action=add&id=${book.id}">
             <div class="add-to-cart">
               <div class="qty-label">
                 Quantity
@@ -68,24 +68,24 @@
                   <span class="qty-down">-</span>
                 </div>
               </div>
-              <c:if test="${product.getQuantity() > 0}">
+              <c:if test="${book.getQuantity() > 0}">
                 <button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i>add to cart</button>
               </c:if>
             </div>
           </form>
-          <ul class="product-links">
+          <ul class="book-links">
             <li>Category:</li>
-            <li><a href="/nav?action=search&keyword=${product.category}">${product.getCategory()}</a></li>
+            <li><a href="/nav?action=search&keyword=${book.category}">${book.getCategory()}</a></li>
           </ul>
-          <ul class="product-links">
-            <li>Brand:</li>
-            <li><a href="/nav?action=search&keyword=${product.brand}">${product.getBrand()}</a></li>
+          <ul class="book-links">
+            <li>Publishers:</li>
+            <li><a href="/nav?action=search&keyword=${book.publishers}">${book.getPublishers()}</a></li>
           </ul>
-          <ul class="product-links">
-            <li>Description:</li>
-            <li>${product.getDescription()}</li>
+          <ul class="book-links">
+            <li>Describe:</li>
+            <li>${book.getDescribe()}</li>
           </ul>
-          <ul class="product-links">
+          <ul class="book-links">
             <li>Share:</li>
             <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
             <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>

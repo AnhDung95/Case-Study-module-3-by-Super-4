@@ -9,25 +9,38 @@ import com.example.casestudymodule3.service.interfaceService.IUsersService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
+@WebServlet (name = "LoginServlet" , urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     private final IUsersService iUsersService = new UsersServiceImplement();
     private final IBookService iBookService = new BookServiceImplement();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-        action(req, resp);
+        String action = req.getParameter("action");
+        if (action == null)
+            action = "";
+        switch (action) {
+            case "registration":
+                registration(req, resp);
+                break;
+            default:
+                showloginPage(req, resp);
+                break;
+        }
+    }
+
+    private void showloginPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("client/login/login.jsp").forward(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
         action(req, resp);
     }
 
@@ -54,7 +67,7 @@ public class LoginServlet extends HttpServlet {
         Users users = new Users(account, password);
         int userID = iUsersService.findByUser(users);
         if (userID == -1) {
-            RequestDispatcher dispatcher = req.getRequestDispatcher("login/index.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("login/login.jsp");
             String message = "Account or password is invalid";
             req.setAttribute("message", message);
             dispatcher.forward(req, resp);

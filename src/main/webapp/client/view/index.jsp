@@ -22,11 +22,11 @@
             <div class="col-md-4 col-xs-6">
                 <div class="library">
                     <div class="library-img">
-                        <img src="${url}/img/shop01.png" alt="">
+                        <img src="${url}/img/sgk.jpg" alt="">
                     </div>
                     <div class="shop-body">
-                        <h3>Laptop<br>Collection</h3>
-                        <a href="/nav?action=laptop" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                        <h3>Sách giáo khoa<br>Collection</h3>
+                        <a href="/nav?action=textbooks" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -36,11 +36,11 @@
             <div class="col-md-4 col-xs-6">
                 <div class="shop">
                     <div class="shop-img">
-                        <img src="${url}/img/product04.png" alt="">
+                        <img src="${url}/img/tt.jpg" alt="">
                     </div>
                     <div class="shop-body">
-                        <h3>Tablet<br>Collection</h3>
-                        <a href="/nav?action=tablet" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                        <h3>Tiểu Thuyết<br>Collection</h3>
+                        <a href="/nav?action=novel" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -50,11 +50,11 @@
             <div class="col-md-4 col-xs-6">
                 <div class="shop">
                     <div class="shop-img">
-                        <img src="${url}/img/product07.png" alt="">
+                        <img src="${url}/img/truyentranh.jpg" alt="">
                     </div>
                     <div class="shop-body">
-                        <h3>Smart Phone<br>Collection</h3>
-                        <a href="/nav?action=sm" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                        <h3>Truyện Tranh<br>Collection</h3>
+                        <a href="/nav?action=comic" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -76,13 +76,13 @@
             <!-- section title -->
             <div class="col-md-12">
                 <div class="section-title">
-                    <h3  class="title">New Products</h3>
+                    <h3  class="title">New BOOK</h3>
                     <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
                             <li class="${active1}"><a href="/home">All</a></li>
-                            <li class="${active2}"><a href="/home?action=laptop">Laptop</a></li>
-                            <li class="${active3}"><a href="/home?action=tablet">Tablets</a></li>
-                            <li class="${active4}"><a href="/home?action=smartphone">SmartPhones</a></li>
+                            <li class="${active2}"><a href="/home?action=textbooks">Sách Giáo Khoa</a></li>
+                            <li class="${active3}"><a href="/home?action=novel">Tiểu Thuyết</a></li>
+                            <li class="${active4}"><a href="/home?action=comic">Truyện Tranh</a></li>
                         </ul>
                     </div>
                 </div>
@@ -91,26 +91,26 @@
             <!-- Products tab & slick -->
             <div class="col-md-12">
                 <div class="row">
-                    <div class="products-tabs">
+                    <div class="books-tabs">
                         <!-- tab -->
                         <div id="tab1" class="tab-pane active">
-                            <div class="products-slick" data-nav="#slick-nav-1">
-                                <jsp:useBean id="products" scope="request" type="java.util.List"/>
-                                <c:forEach items="${products}" var="product">
+                            <div class="books-slick" data-nav="#slick-nav-1">
+                                <jsp:useBean id="book" scope="request" type="java.util.List"/>
+                                <c:forEach items="${book}" var="book">
                                     <!-- product -->
-                                    <div class="product">
-                                        <div class="product-img">
-                                            <img src="${product.getImg()}" alt="">
-                                            <div class="product-label">
+                                    <div class="book">
+                                        <div class="book-img">
+                                            <img src="${book.getImg()}" alt="">
+                                            <div class="book-label">
                                                 <span class="sale">-10%</span>
                                                 <span class="new">NEW</span>
                                             </div>
                                         </div>
-                                        <div class="product-body">
-                                            <p class="product-brand">${product.getBrand()}</p>
-                                            <h3 class="product-name"><a href="/home?action=detail&id=${product.getId()}">${product.getName()}</a></h3>
-                                            <h4 class="product-price">$ ${product.getPrice()} VND <del class="product-old-price">${product.getPrice() * 1.1}</del></h4>
-                                            <div class="product-rating">
+                                        <div class="book-body">
+                                            <p class="book-brand">${book.getPublishers()}</p>
+                                            <h3 class="book-name"><a href="/home?action=detail&id=${book.getId()}">${book.getName()}</a></h3>
+                                            <h4 class="book-price">$ ${book.getPrice()} VND <del class="book-old-price">${book.getPrice() * 1.1}</del></h4>
+                                            <div class="book-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -124,11 +124,11 @@
                                             </div>
                                         </div>
                                         <div class="add-to-cart">
-                                            <c:if test="${product.quantity > 0}">
-                                                <a href="/cart?action=add&id=${product.id}">
+                                            <c:if test="${book.quantity > 0}">
+                                                <a href="/cart?action=add&id=${book.id}">
                                                     <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
                                             </c:if>
-                                            <c:if test="${product.quantity <= 0}">
+                                            <c:if test="${book.quantity <= 0}">
                                                 <p>Sold out</p>
                                             </c:if>
                                         </div>
@@ -186,7 +186,7 @@
                     </ul>
                     <h2 class="text-uppercase">hot deal this week</h2>
                     <p>New Collection Up to 50% OFF</p>
-                    <a class="primary-btn cta-btn" href="#">Shop now</a>
+                    <a class="primary-btn cta-btn" href="#">Library now</a>
                 </div>
             </div>
         </div>
@@ -210,9 +210,9 @@
                     <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
                             <li class="${active1}"><a href="/home">All</a></li>
-                            <li class="${active2}"><a href="/home?action=laptop">Laptop</a></li>
-                            <li class="${active3}"><a href="/home?action=tablet">Tablets</a></li>
-                            <li class="${active4}"><a href="/home?action=smartphone">SmartPhones</a></li>
+                            <li class="${active2}"><a href="/home?action=textbooks">Sách Giáo Khoa</a></li>
+                            <li class="${active3}"><a href="/home?action=novel">Tiểu Thuyết</a></li>
+                            <li class="${active4}"><a href="/home?action=comic">Truyện Tranh</a></li>
                         </ul>
                     </div>
                 </div>
@@ -222,25 +222,25 @@
             <!-- Products tab & slick -->
             <div class="col-md-12">
                 <div class="row">
-                    <div class="products-tabs">
+                    <div class="book-tabs">
                         <!-- tab -->
                         <div id="tab2" class="tab-pane fade in active">
                             <div class="products-slick" data-nav="#slick-nav-2">
-                                <c:forEach items="${requestScope.products}" var="product">
+                                <c:forEach items="${requestScope.book}" var="book">
                                     <!-- product -->
-                                    <div class="product">
-                                        <div class="product-img">
-                                            <img src="${product.img}" alt="">
-                                            <div class="product-label">
+                                    <div class="book">
+                                        <div class="book-img">
+                                            <img src="${book.img}" alt="">
+                                            <div class="book-label">
                                                 <span class="sale">-10%</span>
                                                 <span class="new">NEW</span>
                                             </div>
                                         </div>
-                                        <div class="product-body">
-                                            <p class="product-brand">${product.brand}</p>
-                                            <h3 class="product-name"><a href="/home?action=detail&id=${product.id}">${product.name}</a></h3>
-                                            <h4 class="product-price">$ ${product.price} VND
-                                                <del class="product-old-price">${product.price * 1.1}</del></h4>
+                                        <div class="book-body">
+                                            <p class="book-brand">${book.publishers}</p>
+                                            <h3 class="product-name"><a href="/home?action=detail&id=${book.id}">${book.name}</a></h3>
+                                            <h4 class="product-price">$ ${book.price} VND
+                                                <del class="product-old-price">${book.price * 1.1}</del></h4>
                                             <div class="product-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -255,11 +255,11 @@
                                             </div>
                                         </div>
                                         <div class="add-to-cart">
-                                            <c:if test="${product.quantity > 0}">
-                                                <a href="/cart?action=add&id=${product.id}">
+                                            <c:if test="${book.quantity > 0}">
+                                                <a href="/cart?action=add&id=${book.id}">
                                                     <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
                                             </c:if>
-                                            <c:if test="${product.quantity <= 0}">
+                                            <c:if test="${book.quantity <= 0}">
                                                 <p>Sold out</p>
                                             </c:if>
                                         </div>
@@ -289,24 +289,24 @@
         <div class="row">
             <div class="col-md-4 col-xs-6">
                 <div class="section-title">
-                    <h4 class="title">Top Laptop</h4>
+                    <h4 class="title">Top Book</h4>
                     <div class="section-nav">
                         <div id="slick-nav-3" class="products-slick-nav"></div>
                     </div>
                 </div>
 
                 <div class="products-widget-slick" data-nav="#slick-nav-3">
-                    <c:forEach items="${laptops}" var="lap">
+                    <c:forEach items="${books}" var="sgk">
                         <div>
                             <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="${lap.img}" alt="">
+                            <div class="book-widget">
+                                <div class="book-img">
+                                    <img src="${sgk.img}" alt="">
                                 </div>
-                                <div class="product-body">
-                                    <p class="product-category">${lap.brand}</p>
-                                    <h3 class="product-name"><a href="/home?action=detail&id=${lap.id}">${lap.name}</a></h3>
-                                    <h4 class="product-price">$ ${lap.price} VND <del class="product-old-price">${lap.price * 1.1}</del></h4>
+                                <div class="book-body">
+                                    <p class="product-category">${sgk.publishers}</p>
+                                    <h3 class="product-name"><a href="/home?action=detail&id=${sgk.id}">${sgk.name}</a></h3>
+                                    <h4 class="product-price">$ ${sgk.price} VND <del class="product-old-price">${sgk.price * 1.1}</del></h4>
                                 </div>
                             </div>
                         </div>
@@ -317,24 +317,24 @@
 
             <div class="col-md-4 col-xs-6">
                 <div class="section-title">
-                    <h4 class="title">Top SmartPhone</h4>
+                    <h4 class="title">Top Novel</h4>
                     <div class="section-nav">
                         <div id="slick-nav-4" class="products-slick-nav"></div>
                     </div>
                 </div>
 
                 <div class="products-widget-slick" data-nav="#slick-nav-4">
-                    <c:forEach begin="0" end="${sms.size()-1}"  var="i">
+                    <c:forEach begin="0" end="${novel.size()-1}"  var="novel">
                         <div>
                             <!-- product widget -->
                             <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="${sms.get(i).img}" alt="">
+                                <div class="novel-img">
+                                    <img src="${novel.get(novel).img}" alt="">
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">${sms.get(i).brand}</p>
-                                    <h3 class="product-name"><a href="/home?action=detail&id=${sms.get(i).id}">${sms.get(i).name}</a></h3>
-                                    <h4 class="product-price">$ ${sms.get(i).price} VND <del class="product-old-price">${sms.get(i).price * 1.1}</del></h4>
+                                    <p class="product-category">${novel.get(novel).publishers}</p>
+                                    <h3 class="product-name"><a href="/home?action=detail&id=${novel.get(novel).id}">${novel.get(novel).name}</a></h3>
+                                    <h4 class="product-price">$ ${novel.get(novel).price} VND <del class="product-old-price">${novel.get(novel).price * 1.1}</del></h4>
                                 </div>
                             </div>
                             <!-- /product widget -->
@@ -345,26 +345,26 @@
 
             <div class="clearfix visible-sm visible-xs"></div>
 
-            <div class="col-md-4 col-xs-6">
+            <div class="col-md-4 col-xs-">6
                 <div class="section-title">
-                    <h4 class="title">Top Tablet</h4>
+                    <h4 class="title">Top Comic</h4>
                     <div class="section-nav">
                         <div id="slick-nav-5" class="products-slick-nav"></div>
                     </div>
                 </div>
 
                 <div class="products-widget-slick" data-nav="#slick-nav-5">
-                    <c:forEach begin="0" end="${tablets.size()-1}" var="i">
+                    <c:forEach begin="0" end="${comics.size()-1}" var="i">
                         <div>
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="${tablets.get(i).img}" alt="">
+                                    <img src="${comics.get(i).img}" alt="">
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">${tablets.get(i).brand}</p>
-                                    <h3 class="product-name"><a href="/home?action=detail&id=${tablets.get(i).id}">${tablets.get(i).name}</a></h3>
-                                    <h4 class="product-price">$ ${tablets.get(i).price} VND <del class="product-old-price">${tablets.get(i).price * 1.1}</del></h4>
+                                    <p class="product-category">${comics.get(i).publishers}</p>
+                                    <h3 class="product-name"><a href="/home?action=detail&id=${comics.get(i).id}">${comics.get(i).name}</a></h3>
+                                    <h4 class="product-price">$ ${comics.get(i).price} VND <del class="product-old-price">${comics.get(i).price * 1.1}</del></h4>
                                 </div>
                             </div>
                             <!-- /product widget -->

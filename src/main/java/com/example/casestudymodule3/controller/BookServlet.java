@@ -86,7 +86,7 @@ public class BookServlet extends HttpServlet {
         request.setAttribute("textbooks", textbooks);
         request.setAttribute("novel", novel);
         request.setAttribute("comic", comic);
-        request.getRequestDispatcher("client/view/index.jsp").forward(request, response);
+        request.getRequestDispatcher("client/view/login.jsp").forward(request, response);
     }
 
     private void novelHome(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
@@ -100,7 +100,7 @@ public class BookServlet extends HttpServlet {
         request.setAttribute("textbooks", textbooks);
         request.setAttribute("novel", novel);
         request.setAttribute("comic", comic);
-        request.getRequestDispatcher("client/view/index.jsp").forward(request, response);
+        request.getRequestDispatcher("client/view/login.jsp").forward(request, response);
     }
 
     private void textbooksHome(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
@@ -113,7 +113,7 @@ public class BookServlet extends HttpServlet {
         request.setAttribute("textbooks", textbooks);
         request.setAttribute("novel", novel);
         request.setAttribute("comic", comic);
-        request.getRequestDispatcher("client/view/index.jsp").forward(request, response);
+        request.getRequestDispatcher("client/view/login.jsp").forward(request, response);
     }
 
     private void findById(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
