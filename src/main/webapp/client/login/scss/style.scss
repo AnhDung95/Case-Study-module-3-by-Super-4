@@ -1,0 +1,331 @@
+//@import 'bootstrap/bootstrap';
+//@import 'bootstrap/variables';
+//@import 'bootstrap/mixins';
+//
+//$font-primary: 'Lato',Arial, sans-serif;
+//$primary: #fbceb5;
+//
+//
+//body{
+//	font-family: $font-primary;
+//	font-size: 16px;
+//	line-height: 1.8;
+//	font-weight: normal;
+//	color: lighten($black,50%);
+//	position: relative;
+//	z-index: 0;
+//	padding: 0;
+//	&:after{
+//		position: absolute;
+//		top: 0;
+//		left: 0;
+//		right: 0;
+//		bottom: 0;
+//		content: '';
+//		background: $black;
+//		opacity: .3;
+//		z-index: -1;
+//	}
+//}
+//a {
+//	transition: .3s all ease;
+//	color: $primary;
+//	&:hover, &:focus {
+//		text-decoration: none !important;
+//		outline: none !important;
+//		box-shadow: none;
+//	}
+//}
+//h1, h2, h3, h4, h5,
+//.h1, .h2, .h3, .h4, .h5 {
+//	line-height: 1.5;
+//	font-weight: 400;
+//	font-family: $font-primary;
+//	color: $black;
+//}
+//
+//.bg-primary{
+//	background: $primary !important;
+//}
+//
+//.ftco-section{
+//	padding: 7em 0;
+//}
+//
+//.ftco-no-pt{
+//	padding-top: 0;
+//}
+//.ftco-no-pb{
+//	padding-bottom: 0;
+//}
+////HEADING SECTION
+//.heading-section{
+//	font-size: 28px;
+//	color: $white;
+//}
+//
+////COVER BG
+//.img{
+//	background-size: cover;
+//	background-repeat: no-repeat;
+//	background-position: center center;
+//}
+//
+//.login-wrap{
+//	position: relative;
+//	color: rgba(255,255,255,.9);
+//	h3{
+//		font-weight: 300;
+//		color: $white;
+//	}
+//	.social{
+//		width: 100%;
+//		a{
+//			width: 100%;
+//			display: block;
+//			border: 1px solid rgba(255,255,255,.4);
+//			color: $black;
+//			background: $white;
+//			&:hover{
+//				background: $black;
+//				color: $white;
+//				border-color: $black;
+//			}
+//		}
+//	}
+//}
+//
+//.form-group{
+//	position: relative;
+//}
+//
+//.field-icon {
+//	position: absolute;
+//	top: 50%;
+//	right: 15px;
+//	transform: translateY(-50%);
+//	color: rgba(255,255,255,.9);
+//}
+//
+////FORM CONTROL
+//.form-control{
+//	background: transparent;
+//	border: none;
+//	height: 50px;
+//	color: rgba(255,255,255,1) !important;
+//	border: 1px solid transparent;
+//	background: rgba(255,255,255,.08);
+//	border-radius: 40px;
+//	padding-left: 20px;
+//	padding-right: 20px;
+//	@include transition(.3s);
+//	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+//	  color: rgba(255,255,255,.8) !important;
+//	}
+//	&::-moz-placeholder { /* Firefox 19+ */
+//	  color: rgba(255,255,255,.8) !important;
+//	}
+//	&:-ms-input-placeholder { /* IE 10+ */
+//	  color: rgba(255,255,255,.8) !important;
+//	}
+//	&:-moz-placeholder { /* Firefox 18- */
+//	  color: rgba(255,255,255,.8) !important;
+//	}
+//	&:hover, &:focus{
+//		background: transparent;
+//		outline: none;
+//		box-shadow: none;
+//		border-color: rgba(255,255,255,.4);
+//	}
+//	&:focus{
+//		border-color: rgba(255,255,255,.4);
+//	}
+//}
+//textarea.form-control {
+//	height: inherit!important;
+//}
+//
+//
+//
+//
+////CHECKBOX STYLE
+//.checkbox-wrap {
+//  display: block;
+//  position: relative;
+//  padding-left: 30px;
+//  margin-bottom: 12px;
+//  cursor: pointer;
+//  font-size: 16px;
+//  font-weight: 500;
+//  -webkit-user-select: none;
+//  -moz-user-select: none;
+//  -ms-user-select: none;
+//  user-select: none;
+//}
+//
+///* Hide the browser's default checkbox */
+//.checkbox-wrap input {
+//  position: absolute;
+//  opacity: 0;
+//  cursor: pointer;
+//  height: 0;
+//  width: 0;
+//}
+//
+///* Create a custom checkbox */
+//.checkmark {
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+//}
+//
+//
+///* Create the checkmark/indicator (hidden when not checked) */
+//.checkmark:after {
+//  content: "\f0c8";
+//  font-family: "FontAwesome";
+//  position: absolute;
+//  color:rgba(255,255,255,.1);
+//  font-size: 20px;
+//  margin-top: -4px;
+//  @include transition(.3s);
+//}
+//
+///* Show the checkmark when checked */
+//.checkbox-wrap{
+//	input:checked ~ .checkmark:after {
+//	  display: block;
+//	  content: "\f14a";
+//	  font-family: "FontAwesome";
+//	  color: rgba(0,0,0,.2);
+//	}
+//}
+//
+///* Style the checkmark/indicator */
+//.checkbox-wrap .checkmark:after {
+//}
+//
+//
+//.checkbox-primary{
+//  color: $primary;
+//  input:checked ~ .checkmark:after {
+//	  color: $primary;
+//	}
+//}
+//
+//
+////BUTTON
+//.btn {
+//	cursor: pointer;
+//	@include border-radius(40px);
+//	box-shadow: none!important;
+//	font-size: 15px;
+//	text-transform: uppercase;
+//	&:hover, &:active, &:focus {
+//		outline: none;
+//	}
+//	&.btn-primary {
+//		background: $primary !important;
+//		border: 1px solid $primary !important;
+//		color: $black !important;
+//		&:hover {
+//			border: 1px solid $primary;
+//			background: transparent;
+//			color :$primary;
+//		}
+//		&.btn-outline-primary {
+//			border: 1px solid $primary;
+//			background: transparent;
+//			color :$primary;
+//			&:hover {
+//				border: 1px solid transparent;
+//				background: $primary;
+//				color :$white;
+//			}
+//		}
+//	}
+//}
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+	background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;
+	font-family: 'Numans', sans-serif;
+}
+
+.container{
+	height: 100%;
+	align-content: center;
+}
+
+.card{
+	height: 370px;
+	margin-top: auto;
+	margin-bottom: auto;
+	width: 400px;
+	background-color: rgba(0,0,0,0.5) !important;
+}
+
+.social_icon span{
+	font-size: 60px;
+	margin-left: 10px;
+	color: #FFC312;
+}
+
+.social_icon span:hover{
+	color: white;
+	cursor: pointer;
+}
+
+.card-header h3{
+	color: white;
+}
+
+.social_icon{
+	position: absolute;
+	right: 20px;
+	top: -45px;
+}
+
+.input-group-prepend span{
+	width: 50px;
+	background-color: #FFC312;
+	color: black;
+	border:0 !important;
+}
+
+input:focus{
+	outline: 0 0 0 0  !important;
+	box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+	color: white;
+}
+
+.remember input
+{
+	width: 20px;
+	height: 20px;
+	margin-left: 15px;
+	margin-right: 5px;
+}
+
+.login_btn{
+	color: black;
+	background-color: #FFC312;
+	width: 100px;
+}
+
+.login_btn:hover{
+	color: black;
+	background-color: white;
+}
+
+.links{
+	color: white;
+}
