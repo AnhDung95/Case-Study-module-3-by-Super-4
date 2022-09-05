@@ -91,10 +91,10 @@
 
                 </li>
                 <div>
-                    <form class = "navbar-form navbar-left" role = "search">
-
+                    <form class = "navbar-form navbar-left" action="/menu" role = "search"  method="get">
+<input name="action" value="search" hidden>
                         <div class = "form-group">
-                            <input type = "text" href="result.jsp" class = "form-control" placeholder = "Search">
+                            <input type = "text" name="search"  class = "form-control" placeholder = "Search">
                         </div>
                         <button type = "submit"  class = "btn btn-default">Search</button>
 
