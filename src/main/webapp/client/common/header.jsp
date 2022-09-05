@@ -41,7 +41,7 @@
         <div class="col-md-3">
           <div class="header-logo">
             <a href="/home" class="logo">
-              <img src="/client/template/img/logo.png" alt="">
+              <img src="client/template/img/logo.jpg" alt="" width="250px" height="80">
             </a>
           </div>
         </div>
@@ -65,7 +65,7 @@
             <div class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                 <i class="fa fa-library-cart"></i>
-                <span>Your Cart</span>
+                <span>Book Cart</span>
                 <div class="qty">${sessionScope.cart.size()}</div>
               </a>
               <div class="cart-dropdown">
@@ -73,13 +73,13 @@
                   <c:forEach items="${sessionScope.cart}" var="item">
                     <div class="book-widget">
                       <div class="book-img">
-                        <img src="${item.product.img}" alt="">
+                        <img src="${item.book.img}" alt="">
                       </div>
                       <div class="book-body">
-                        <h3 class="book-name"><a href="#">${item.product.name}</a></h3>
-                        <h4 class="book-price"><span class="qty">${item.quantity}</span>$ ${item.quantity * item.product.price}</h4>
+                        <h3 class="book-name"><a href="#">${item.book.name}</a></h3>
+                        <h4 class="book-price"><span class="qty">${item.quantity}</span>$ ${item.quantity * item.book.price}</h4>
                       </div>
-                      <a href="/cart?action=remove&id=${item.product.id}">
+                      <a href="/cart?action=remove&id=${item.book.id}">
                         <button class="delete"><i class="fa fa-close"></i></button></a>
                     </div>
                   </c:forEach>
@@ -125,13 +125,13 @@
       <!-- NAV -->
       <ul class="main-nav nav navbar-nav">
         <li class="${active1}"><a href="/home">Home</a></li>
-        <li class="${activen1}"><a href="/nav?action=store">Store All</a></li>
+        <li class="${activen1}"><a href="/nav?action=store">Tất cả Sách</a></li>
         <li class="${activen2}"><a href="/nav?action=textbooks">Sách Giáo Khoa</a></li>
         <li class="${activen3}"><a href="/nav?action=novel">Tiểu Thuyết</a></li>
         <li class="${activen4}"><a href="/nav?action=comic">Truyện Tranh</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">
-            Brands
+            Nhà Xuất Bản
           </a>
           <div class="dropdown-menu">
             <c:forEach items="${publishers}" var="publishers">

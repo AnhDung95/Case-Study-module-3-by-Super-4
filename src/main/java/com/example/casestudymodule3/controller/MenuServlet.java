@@ -10,6 +10,7 @@ import com.example.casestudymodule3.service.interfaceService.IBookService;
 import com.example.casestudymodule3.service.interfaceService.ICategoryService;
 import com.example.casestudymodule3.service.interfaceService.IPublishersService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,21 +30,14 @@ public class MenuServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         action(request,response);
-    }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        action(request,response);
-    }
-
-    private void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if(action == null) {
             action = "";
         }
         switch (action) {
-            case "store":
-                storeAll(request,response);
+            case "book all":
+                bookAll(request,response);
                 break;
             case "textbooks":
                 storeTextbooks(request,response);
@@ -58,16 +52,26 @@ public class MenuServlet extends HttpServlet {
                 findByKeyword(request,response);
                 break;
         }
+
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        action(request,response);
+    }
+
+    private void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {    }
+
     private void findByKeyword(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
-        String keyword = request.getParameter("keyword");
+        String keyword = request.getParameter("search");
+//        String name= request.getParameter("name");
         List<Book> books = bookService.findByKeyword(keyword);
         request.setAttribute("publishers",publishers);
         request.setAttribute("categories",categories);
         request.setAttribute("book",books);
-        request.getRequestDispatcher("client/view/store.jsp").forward(request,response);
-
+//        request.getRequestDispatcher("result.jsp").forward(request,response);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("admin/result.jsp");
+        dispatcher.forward(request,response);
     }
 
     private void storeComic(HttpServletRequest request, HttpServletResponse response)throws ServletException,IOException {
@@ -97,7 +101,7 @@ public class MenuServlet extends HttpServlet {
         request.getRequestDispatcher("client/view/store.jsp").forward(request,response);
     }
 
-    private void storeAll(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+    private void bookAll(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
         List<Book> books = bookService.getAll();
         request.setAttribute("activen1","active");
         request.setAttribute("publishers",publishers);
@@ -106,5 +110,4 @@ public class MenuServlet extends HttpServlet {
         request.getRequestDispatcher("client/view/store.jsp").forward(request,response);
 
     }
-
 }

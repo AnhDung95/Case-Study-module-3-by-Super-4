@@ -94,19 +94,15 @@
           </ul>
         </div>
       </div>
-      <!-- /Product details -->
 
-      <!-- Product tab -->
       <div class="col-md-12">
         <div id="product-tab-2">
-          <!-- product tab nav -->
           <ul class="tab-nav">
             <li><a data-toggle="tab" href="#reviews">Reviews (${reviews.size()})</a></li>
           </ul>
-          <!-- /product tab nav -->
-          <!-- product tab content -->
+
           <div>
-            <!-- tab3  -->
+
             <div id="tab1" class="tab-pane fade in">
               <div class="row">
                 <!-- Rating -->
@@ -191,8 +187,7 @@
                     </ul>
                   </div>
                 </div>
-                <!-- /Rating -->
-                <!-- Reviews -->
+
                 <div class="col-md-6">
                   <div id="reviews">
                     <c:forEach items="${requestScope.reviews}" var="review">

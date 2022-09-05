@@ -8,6 +8,23 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="client/template/css/bootstrap.min.css">
+    <link rel="stylesheet" href="client/template/css/font-awesome.min.css">
+    <link rel="stylesheet" href="client/template/css/nouislider.min.css">
+    <link rel="stylesheet" href="client/template/css/slick.css">
+    <link rel="stylesheet" href="client/template/css/slick-theme.css">
+    <link rel="stylesheet" href="client/template/css/style.css">
+<%--    <link rel="stylesheet" href="client/template/fonts/FontAwesome.otf">--%>
+<%--    <link rel="stylesheet" href="client/template/fonts/fontawesome-webfont.eot">--%>
+<%--    <link rel="stylesheet" href="client/template/fonts/fontawesome-webfont.svg">--%>
+<%--    <link rel="stylesheet" href="client/template/fonts/fontawesome-webfont.ttf">--%>
+<%--    <link rel="stylesheet" href="client/template/fonts/fontawesome-webfont.woff">--%>
+<%--    <link rel="stylesheet" href="client/template/fonts/fontawesome-webfont.woff2">--%>
+<%--    <link rel="stylesheet" href="client/template/fonts/slick.eot">--%>
+<%--    <link rel="stylesheet" href="client/template/fonts/slick.svg">--%>
+<%--    <link rel="stylesheet" href="client/template/fonts/slick.ttf">--%>
+<%--    <link rel="stylesheet" href="client/template/fonts/slick.woff">--%>
+
     <jsp:include page="../common/head.jsp"/>
 </head>
 <body>
@@ -22,11 +39,11 @@
             <div class="col-md-4 col-xs-6">
                 <div class="library">
                     <div class="library-img">
-                        <img src="${url}/img/sgk.jpg" alt="">
+                        <img src="${url}/img/sgk.jpg" alt="" width="250" height="200">
                     </div>
-                    <div class="shop-body">
+                    <div class="library-body">
                         <h3>Sách giáo khoa<br>Collection</h3>
-                        <a href="/nav?action=textbooks" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="/nav?action=textbooks" class="cta-btn">Show now <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -34,46 +51,43 @@
 
             <!-- shop -->
             <div class="col-md-4 col-xs-6">
-                <div class="shop">
-                    <div class="shop-img">
-                        <img src="${url}/img/tt.jpg" alt="">
+                <div class="library">
+                    <div class="library-img">
+                        <img src="${url}/img/tt.jpg" alt="" width="250" height="200">
                     </div>
-                    <div class="shop-body">
+                    <div class="library-body">
                         <h3>Tiểu Thuyết<br>Collection</h3>
-                        <a href="/nav?action=novel" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="/nav?action=novel" class="cta-btn">Show now <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
-            <!-- /shop -->
 
-            <!-- shop -->
             <div class="col-md-4 col-xs-6">
-                <div class="shop">
-                    <div class="shop-img">
-                        <img src="${url}/img/truyentranh.jpg" alt="">
+                <div class="library">
+                    <div class="library-img">
+                        <img src="${url}/img/truyentranh.jpg" alt="" width="250" height="200">
                     </div>
-                    <div class="shop-body">
+                    <div class="library-body">
                         <h3>Truyện Tranh<br>Collection</h3>
-                        <a href="/nav?action=comic" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="/nav?action=comic" class="cta-btn">Show now <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
-            <!-- /shop -->
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<!-- /SECTION -->
 
-<!-- SECTION -->
+        </div>
+
+    </div>
+
+</div>
+<!
+
+
 <div class="section">
-    <!-- container -->
+
     <div class="container">
-        <!-- row -->
+
         <div class="row">
 
-            <!-- section title -->
             <div class="col-md-12">
                 <div class="section-title">
                     <h3  class="title">New BOOK</h3>
@@ -378,14 +392,177 @@
     <!-- /container -->
 </div>
 <!-- /SECTION -->
-<jsp:include page="../common/footer.jsp"/>
-<!-- jQuery Plugins -->
-<script src="${url}/js/jquery.min.js"></script>
-<script src="${url}/js/bootstrap.min.js"></script>
-<script src="${url}/js/slick.min.js"></script>
-<script src="${url}/js/nouislider.min.js"></script>
-<script src="${url}/js/jquery.zoom.min.js"></script>
-<script src="${url}/js/main.js"></script>
+<%--<jsp:include page="../common/footer.jsp"/>--%>
+<!-- NEWSLETTER -->
+<div id="newsletter" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="newsletter">
+                    <p>Sign Up for the <strong>NEWSLETTER</strong></p>
+                    <form>
+                        <input class="input" type="email" placeholder="Enter Your Email">
+                        <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+                    </form>
+                    <ul class="newsletter-follow">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /NEWSLETTER -->
+<div id="newsletter" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="newsletter">
+                    <p>Sign Up for the <strong>NEWSLETTER</strong></p>
+                    <form>
+                        <input class="input" type="email" placeholder="Enter Your Email">
+                        <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+                    </form>
+                    <ul class="newsletter-follow">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- FOOTER -->
 
+
+<footer id="footer">
+    <!-- top footer -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">About Us</h3>
+                                    <p>The cheapest and most reputation store in the world. Confirmed by PuzzyCat Team</p>
+                        <ul class="footer-links">
+                            <li><a href="#"><i class="fa fa-map-marker"></i>Nhà số 23, Lô TT-01, Khu đô thị MonCity, P. Hàm Nghi, Hà Nội</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>0123696969</a></li>
+                            <li><a href="#"><i class="fa fa-envelope-o"></i>minhhoang3011@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">Categories</h3>
+                        <ul class="footer-links">
+                                          <li><a href="#">Hot deals</a></li>
+                                          <li><a href="#">Laptops</a></li>
+                                          <li><a href="#">Smartphones</a></li>
+                                          <li><a href="#">Cameras</a></li>
+                                          <li><a href="#">Accessories</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="clearfix visible-xs"></div>
+
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">Information</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Orders and Returns</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-title">Service</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">View Cart</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="#">Track My Order</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /top footer -->
+
+    <!-- bottom footer -->
+    <div id="bottom-footer" class="section">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="footer-payments">
+                        <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+                        <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+                    </ul>
+                    <span class="copyright">
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</span>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /bottom footer -->
+</footer>
+<!-- jQuery Plugins -->
+<script src="client/template/js/bootstrap.min.js"></script>
+<script src="client/template/js/jquery.min.js"></script>
+<script src="client/template/js/jquery.zoom.min.js"></script>
+<script src="client/template/js/main.js"></script>
+<script src="client/template/js/nouislider.min.js"></script>
+<script src="client/template/js/slick.min.js"></script>
 </body>
 </html>
